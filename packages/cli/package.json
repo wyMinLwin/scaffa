@@ -1,0 +1,17 @@
+{
+  "name": "frontend-makro",
+  "version": "1.0.4",
+  "description": "",
+  "main": "index.js",
+  "private": false,
+  
+  "bin": {
+    "create@makro": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
