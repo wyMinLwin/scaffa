@@ -2,9 +2,9 @@
   "name": "frontend-makro",
   "version": "1.0.4",
   "description": "",
-  "main": "index.js",
+  "main": "bin/index.js",
+  "type": "module",
   "private": false,
-  
   "bin": {
     "create@makro": "./bin/index.js"
   },
@@ -13,5 +13,12 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "gradient-string": "^3.0.0",
+    "inquirer": "^12.0.0",
+    "nanospinner": "^1.1.0",
+    "simple-git": "^3.27.0"
+  }
 }
