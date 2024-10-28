@@ -1,27 +1,30 @@
-import DefaultLayout from '@/layouts/DefaultLayout'
-import HomeView from '@/modules/home/HomeView'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import DefaultLayout from "@/layouts/DefaultLayout";
+import HomeView from "@/modules/home/HomeView";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <DefaultLayout />,
-        children: [
-            {
-                path: "",
-                element: <HomeView />,
-            }
-        ]
-    }
-])
+	{
+		path: "/",
+		element: <DefaultLayout />,
+		children: [
+			{
+				path: "",
+				element: <HomeView />,
+			},
+		],
+	},
+]);
+
 const Wrapper = () => {
-  return (
-    <>
-        <RouterProvider router={router}>
+	const queryClient = new QueryClient();
+	return (
+		<>
+			<QueryClientProvider client={queryClient}>
+				<RouterProvider router={router}></RouterProvider>
+			</QueryClientProvider>
+		</>
+	);
+};
 
-        </RouterProvider>
-    </>
-  )
-}
-
-export default Wrapper
+export default Wrapper;
