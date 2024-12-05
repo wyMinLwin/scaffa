@@ -8,7 +8,7 @@ const HomeView = () => {
 	const changeLanguage = (lng: string) => {
 		i18next.changeLanguage(lng);
 	};
-	const testData = api.test.getTestData.useQuery();
+	const productsQuery  = api.products.getProducts.useQuery();
 	return (
 		<div>
 			<h1 className="">Template: React-std</h1>
@@ -19,11 +19,11 @@ const HomeView = () => {
 				<Button onClick={() => changeLanguage("mm")}>Myanmar</Button>
 			</div>
 
-			{testData.isLoading ? (
+			{productsQuery.isLoading ? (
 				<p>Loading...</p>
 			) : (
 				<div>
-					{testData.data?.map((item) => (
+					{productsQuery.data?.map((item) => (
 						<div key={item.id}>{item.title}</div>
 					))}
 				</div>
