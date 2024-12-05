@@ -70,7 +70,7 @@ const cloneRepo = async (projectName, template, packageManager) => {
 
     process.chdir(projectName);
 
-    const templatePath = path.join(process.cwd('packages/template'), 'pa', template);
+    const templatePath = path.join(process.cwd(), 'packages', 'templates', template);
     const projectRootPath = process.cwd();
 
     const copyFiles = async (src, dest) => {
