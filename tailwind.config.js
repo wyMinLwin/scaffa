@@ -4,14 +4,16 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				bg: '#f8f5f3',
-				primary: '#f7cb45',
+				bg: '#222222',
+				primary: '#fce566',
 				border: '#282828',
-				mute: '#b2afab'
+				mute: '#b2afab',
+				light: '#f7f1ff',
+				dark: '#211f22',
+				error: '#fc608c',
 			},
 			fontFamily: {
-				title: ['"Karla"', 'sans-serif'],
-				display: ['"Inconsolata"', 'monospace']
+				display: ['"Rubik"', 'sans-serif'],
 			}
 		}
 	},
