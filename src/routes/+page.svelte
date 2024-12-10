@@ -23,7 +23,8 @@
 
 <svelte:head>
 	<title>Frontend Makro</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Frontend Makro, All in one pre setup frontend templates" />
+	<meta name="keywords" content="Frontend, Makro, Frontend Makro, UI Templates , Templates, TailwindCSS, Svelte, Vite, React" />
 </svelte:head>
 
 <section
@@ -78,7 +79,7 @@
 
 	<div class="grid grid-cols-2 gap-5 w-[270px] sm:w-[420px]">
 		<a
-			href="/"
+			href="/docs"
 			class="col-span-2 sm:col-span-1 border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-[400ms] hover:scale-105"
 			aria-label="Go to Documentations"
 		>

@@ -3,8 +3,8 @@
 	import '../app.css';
 </script>
 
-<div class="app font-display bg-bg text-light min-h-svh">
-	<main>
+<div class="app font-display bg-bg text-light w-screen h-svh overflow-hidden">
+	<main class="h-full overflow-y-auto">
 		<!-- <Navbar /> -->
 		<slot />
 	</main>
