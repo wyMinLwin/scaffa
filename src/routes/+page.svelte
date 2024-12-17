@@ -1,5 +1,5 @@
 <script>
-	import { fade, scale } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
 
 	let copied = false;
 
@@ -24,7 +24,10 @@
 <svelte:head>
 	<title>Frontend Makro</title>
 	<meta name="description" content="Frontend Makro, All in one pre setup frontend templates" />
-	<meta name="keywords" content="Frontend, Makro, Frontend Makro, UI Templates , Templates, TailwindCSS, Svelte, Vite, React" />
+	<meta
+		name="keywords"
+		content="Frontend, Makro, Frontend Makro, UI Templates , Templates, TailwindCSS, Svelte, Vite, React"
+	/>
 </svelte:head>
 
 <section
@@ -77,22 +80,22 @@
 		</code>
 	</div>
 
-	<div class="grid grid-cols-2 gap-5 w-[270px] sm:w-[420px]">
-		<a
+	<div class="">
+		<!-- <a
 			href="/docs"
 			class="col-span-2 sm:col-span-1 border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-[400ms] hover:scale-105"
 			aria-label="Go to Documentations"
 		>
 			Documentations
 			<img src="/arrow.svg" alt="arrow" class="w-5 h-5" />
-		</a>
+		</a> -->
 		<a
 			href="https://github.com/wyMinLwin/frontend-makro"
 			target="_blank"
-			class="col-span-2 sm:col-span-1 border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center text-primary transition-all duration-[400ms] hover:scale-105"
+			class="border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center text-primary transition-all duration-[400ms] hover:scale-105"
 			aria-label="Star on GitHub"
 		>
-			Star on GitHub
+			Star the repository on GitHub
 			<img src="/star-fill.svg" alt="star" class="w-5 h-5" />
 		</a>
 	</div>

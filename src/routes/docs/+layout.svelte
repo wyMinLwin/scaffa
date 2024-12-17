@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
+	import { page } from '$app/stores';
+
+	let routes = $page.route.id?.split('/').slice(1) || [];
 </script>
 
 <section class="h-full w-full overflow-hidden flex flex-col">
@@ -10,6 +13,16 @@
 	>
 		<Sidebar />
 		<div class="w-full h-full overflow-y-auto pt-4">
+			<div class="flex justify-start items-center space-x-1.5 mb-4">
+				{#each routes as route, i (i)}
+					<span class="capitalize {i === routes.length - 1 ? 'text-light' : 'text-mute'}"
+						>{route}</span
+					>
+					{#if i < routes.length - 1}
+						<span class="text-sm font-extralight text-mute">&#62;</span>
+					{/if}
+				{/each}
+			</div>
 			<slot />
 		</div>
 	</div>
