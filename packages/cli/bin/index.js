@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+// import template
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
@@ -8,9 +9,9 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
+import templates from '../../templates/index.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
-
 
 const initialText = 'create@makro executed!';
 console.log(chalk.bold(gradientText(initialText)));
@@ -31,7 +32,7 @@ inquirer
 		},
 		{
 			type: 'list',
-			choices: ['react-std'],
+			choices: templates,
 			name: 'chooseTemplate',
 			message: 'Choose Template'
 		},
@@ -43,7 +44,8 @@ inquirer
 		}
 	])
 	.then((answers) => {
-		cloneRepo(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
+		console.log(answers);
+		// cloneRepo(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
 	})
 	.catch(() => {
 		console.log(chalk.hex('#eb392d')('Goodbye!'));
@@ -64,69 +66,69 @@ const generateCommand = (packageManager) => {
 };
 
 const cloneRepo = async (projectName, template, packageManager) => {
-    cloneSpinner.start();
-    await simpleGit().clone('git@github.com:wyMinLwin/frontend-makro.git', projectName);
-    cloneSpinner.stop();
+	cloneSpinner.start();
+	await simpleGit().clone('git@github.com:wyMinLwin/frontend-makro.git', projectName);
+	cloneSpinner.stop();
 
-    process.chdir(projectName);
+	process.chdir(projectName);
 
-    const templatePath = path.join(process.cwd(), 'packages', 'templates', template);
-    const projectRootPath = process.cwd();
+	const templatePath = path.join(process.cwd(), 'packages', 'templates', template);
+	const projectRootPath = process.cwd();
 
-    const copyFiles = async (src, dest) => {
-        const entries = await fs.promises.readdir(src, { withFileTypes: true });
-        for (let entry of entries) {
-            const srcPath = path.join(src, entry.name);
-            const destPath = path.join(dest, entry.name);
-            if (entry.isDirectory()) {
-                await fs.promises.mkdir(destPath, { recursive: true });
-                await copyFiles(srcPath, destPath);
-            } else {
-                await fs.promises.copyFile(srcPath, destPath);
-            }
-        }
-    };
+	const copyFiles = async (src, dest) => {
+		const entries = await fs.promises.readdir(src, { withFileTypes: true });
+		for (let entry of entries) {
+			const srcPath = path.join(src, entry.name);
+			const destPath = path.join(dest, entry.name);
+			if (entry.isDirectory()) {
+				await fs.promises.mkdir(destPath, { recursive: true });
+				await copyFiles(srcPath, destPath);
+			} else {
+				await fs.promises.copyFile(srcPath, destPath);
+			}
+		}
+	};
 
-    initializingSpinner.start();
+	initializingSpinner.start();
 
-    // Copy template files
-    const tempDir = path.join(projectRootPath, 'temp');
-    await fs.promises.mkdir(tempDir, { recursive: true });
-    await copyFiles(templatePath, tempDir);
+	// Copy template files
+	const tempDir = path.join(projectRootPath, 'temp');
+	await fs.promises.mkdir(tempDir, { recursive: true });
+	await copyFiles(templatePath, tempDir);
 
-    // Remove all files in the root of the cloned project
-    const rootEntries = await fs.promises.readdir(projectRootPath, { withFileTypes: true });
-    for (let entry of rootEntries) {
-        const entryPath = path.join(projectRootPath, entry.name);
-        if (entry.isDirectory() && entry.name !== 'temp') {
-            await fs.promises.rm(entryPath, { recursive: true, force: true });
-        } else if (entry.name !== 'temp') {
-            await fs.promises.unlink(entryPath);
-        }
-    }
+	// Remove all files in the root of the cloned project
+	const rootEntries = await fs.promises.readdir(projectRootPath, { withFileTypes: true });
+	for (let entry of rootEntries) {
+		const entryPath = path.join(projectRootPath, entry.name);
+		if (entry.isDirectory() && entry.name !== 'temp') {
+			await fs.promises.rm(entryPath, { recursive: true, force: true });
+		} else if (entry.name !== 'temp') {
+			await fs.promises.unlink(entryPath);
+		}
+	}
 
-    // Paste the copied files into the root of the cloned project
-    await copyFiles(tempDir, projectRootPath);
-    await fs.promises.rm(tempDir, { recursive: true, force: true });
+	// Paste the copied files into the root of the cloned project
+	await copyFiles(tempDir, projectRootPath);
+	await fs.promises.rm(tempDir, { recursive: true, force: true });
 
-    initializingSpinner.stop();
+	initializingSpinner.stop();
 
-    console.log(chalk.blue('~ Installing Dependencies... ~'));
-    const installProcess = spawn(generateCommand(packageManager), {
-        stdio: 'inherit',
-        shell: true
-    });
-    installProcess.on('close', (code) => {
-        if (code === 0) {
-            console.log(chalk.greenBright('Project created successfully!'));
-            console.log(chalk.greenBright('Happy Coding!'));
-        } else {
-            console.log(chalk.redBright('\n\nSomething went wrong!'));
-            console.log(
-                chalk.whiteBright(
-                    `run "cd ${projectName} && ${generateCommand(packageManager)}" to try again!`
-                )
-            );
-        }
-    });
+	console.log(chalk.blue('~ Installing Dependencies... ~'));
+	const installProcess = spawn(generateCommand(packageManager), {
+		stdio: 'inherit',
+		shell: true
+	});
+	installProcess.on('close', (code) => {
+		if (code === 0) {
+			console.log(chalk.greenBright('Project created successfully!'));
+			console.log(chalk.greenBright('Happy Coding!'));
+		} else {
+			console.log(chalk.redBright('\n\nSomething went wrong!'));
+			console.log(
+				chalk.whiteBright(
+					`run "cd ${projectName} && ${generateCommand(packageManager)}" to try again!`
+				)
+			);
+		}
+	});
 };
