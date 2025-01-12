@@ -1,24 +1,24 @@
 {
-  "name": "frontend-makro",
-  "version": "1.0.5",
-  "description": "",
-  "main": "bin/index.js",
-  "type": "module",
-  "private": false,
-  "bin": {
-    "create@makro": "./bin/index.js"
-  },
-  "scripts": {
-    "start": "node ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^5.3.0",
-    "gradient-string": "^3.0.0",
-    "inquirer": "^12.0.0",
-    "nanospinner": "^1.1.0",
-    "simple-git": "^3.27.0"
-  }
+	"name": "frontend-makro",
+	"version": "2.0.1",
+	"description": "",
+	"main": "bin/index.js",
+	"type": "module",
+	"private": false,
+	"bin": {
+		"create@makro": "./bin/index.js"
+	},
+	"scripts": {
+		"start": "node ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"gradient-string": "^3.0.0",
+		"inquirer": "^12.0.0",
+		"nanospinner": "^1.1.0",
+		"simple-git": "^3.27.0"
+	}
 }

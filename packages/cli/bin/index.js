@@ -44,8 +44,7 @@ inquirer
 		}
 	])
 	.then((answers) => {
-		console.log(answers);
-		// cloneRepo(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
+		cloneRepo(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
 	})
 	.catch(() => {
 		console.log(chalk.hex('#eb392d')('Goodbye!'));
