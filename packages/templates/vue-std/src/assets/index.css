@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-title: 'Karla', sans-serif;
+    --font-display: 'Inconsolata', monospace;
+}
+
+
+body {
+    @apply font-display;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-title font-semibold text-xl;
+}
