@@ -1,39 +1,59 @@
-# vue-std
+# Vue Standard Template
 
-This template should help get you started developing with Vue 3 in Vite.
+## Tech Stack
+**Client UI:** Vue, Typescript, TailwindCSS, Pinia
 
-## Recommended IDE Setup
+**Client Data Fetch:** Axios, Tanstack
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
+## Run Locally
+**Install Dependencies** 
 ```sh
 pnpm install
 ```
-
-### Compile and Hot-Reload for Development
-
+**Run Local Server**
 ```sh
-pnpm dev
+pnpm run
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
+## Folder Structure
+```bash
+vue-std/
+├── .gitignore
+├── .editorconfig
+├── .gitattributes
+├── .prettierrc.json
+├── .vscode/
+│   ├── extensions.json
+│   └── settings.json
+├── env.d.ts
+├── eslint.config.ts
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── public/
+├── README.md
+├── src/
+│   ├── api/
+│   │   ├── index.ts
+│   │   └── products/
+│   ├── App.vue
+│   ├── assets/
+│   │   └── index.css
+│   ├── components/
+│   ├── config/
+│   │   └── axios.ts
+│   ├── layout/
+│   │   └── DefaultLayout.vue
+│   ├── locales/
+│   ├── main.ts
+│   ├── modules/
+│   │   └── home/
+│   │       └── HomeView.vue
+│   ├── router/
+│   │   └── index.ts
+│   └── stores/
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```

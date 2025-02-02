@@ -7,12 +7,12 @@
 
 ## Run Locally
 **Install Dependencies** 
-```
-$ pnpm install
+```sh
+pnpm install
 ```
 **Run Local Server**
-```
-$ pnpm run
+```sh
+pnpm run
 ```
 
 ## Folder Structure
