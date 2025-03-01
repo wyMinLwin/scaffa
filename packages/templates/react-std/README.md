@@ -48,7 +48,6 @@ react-std/
 │   │       └── HomeView.tsx
 │   ├── shared/
 │   └── vite-env.d.ts
-├── tailwind.config.js
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
