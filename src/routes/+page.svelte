@@ -13,7 +13,7 @@
 
 	const copyCommand = async () => {
 		try {
-			await navigator.clipboard.writeText('npx create@makro');
+			await navigator.clipboard.writeText('npx create-makro@latest');
 			copied = true;
 		} catch (err) {
 			console.error('Failed to copy: ', err);
@@ -52,9 +52,9 @@
 	<div class="space-y-2 flex flex-col justify-center items-center">
 		<h2 class="text-xl sm:text-2xl text-center tracking-wide">One command is all you need</h2>
 		<code
-			class="w-[280px] border-[1px] border-light/10 bg-dark py-6 px-4 rounded-lg flex justify-between items-center gap-5"
+			class="w-[300px] border-[1px] border-light/10 bg-dark py-6 px-4 rounded-lg flex justify-between items-center gap-5"
 		>
-			<pre><span class="text-error">npx</span>&nbsp;<span class="text-primary">create@makro</span
+			<pre><span class="text-error">npx</span>&nbsp;<span class="text-primary">create-makro@latest</span
 				></pre>
 			<div class="w-4 h-4 relative">
 				{#if !copied}
@@ -80,7 +80,7 @@
 		</code>
 	</div>
 
-	<div class="">
+	<div class="w-[300px]">
 		<!-- <a
 			href="/docs"
 			class="col-span-2 sm:col-span-1 border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-[400ms] hover:scale-105"

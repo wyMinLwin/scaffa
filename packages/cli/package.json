@@ -1,18 +1,18 @@
 {
-	"name": "frontend-makro",
-	"version": "2.0.1",
-	"description": "",
+	"name": "create-makro",
+	"version": "0.0.1",
+	"description": "All in one pre setup frontend templates",
+	"author": "Wai Yan Min Lwin",
 	"main": "bin/index.js",
 	"type": "module",
 	"private": false,
 	"bin": {
-		"create@makro": "./bin/index.js"
+		"create-makro": "bin/index.js"
 	},
 	"scripts": {
 		"start": "node ."
 	},
 	"keywords": [],
-	"author": "",
 	"license": "MIT",
 	"dependencies": {
 		"chalk": "^5.3.0",

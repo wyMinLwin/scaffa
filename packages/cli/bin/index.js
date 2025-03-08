@@ -9,7 +9,7 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
-import templates from '../../templates/index.js';
+import templates from '../index.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
 
