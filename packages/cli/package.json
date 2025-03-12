@@ -1,6 +1,6 @@
 {
 	"name": "create-makro",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "All in one pre setup frontend templates",
 	"author": "Wai Yan Min Lwin",
 	"main": "bin/index.js",

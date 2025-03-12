@@ -66,7 +66,7 @@ const generateCommand = (packageManager) => {
 
 const cloneRepo = async (projectName, template, packageManager) => {
 	cloneSpinner.start();
-	await simpleGit().clone('git@github.com:wyMinLwin/frontend-makro.git', projectName);
+	await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
 	cloneSpinner.stop();
 
 	process.chdir(projectName);
