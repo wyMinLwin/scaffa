@@ -109,6 +109,15 @@ const cloneRepo = async (projectName, template, packageManager) => {
 	// Paste the copied files into the root of the cloned project
 	await copyFiles(tempDir, projectRootPath);
 	await fs.promises.rm(tempDir, { recursive: true, force: true });
+	const packageJsonPath = path.join(projectRootPath, 'package.json');
+	try {
+		const packageJsonContent = await fs.promises.readFile(packageJsonPath, 'utf8');
+		const packageJson = JSON.parse(packageJsonContent);
+		packageJson.name = projectName;
+		await fs.promises.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+	} catch (err) {
+		console.log(chalk.red('Failed to update package.json:'), err);
+	}
 
 	initializingSpinner.stop();
 
