@@ -3,7 +3,7 @@ layer(base);
 @import 'tailwindcss';
 
 @custom-var`iant dark (&:is(.dark *));
-
+@plugin "tailwindcss-animate";
 @theme {
 	--font-title: 'Karla', sans-serif;
 	--font-display: 'Inconsolata', monospace;

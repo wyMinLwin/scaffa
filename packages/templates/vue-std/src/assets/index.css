@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
-
+@plugin "tailwindcss-animate";
 @theme {
     --font-title: 'Karla', sans-serif;
     --font-display: 'Inconsolata', monospace;
