@@ -8,21 +8,7 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
-import { fileURLToPath } from 'url';
-
-// Create __dirname in ES module scope
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-//get all the templates
-const templates = fs
-	.readdirSync(path.resolve(__dirname, '../templates'), { withFileTypes: true })
-	.filter((entry) => entry.isDirectory())
-	.map((entry) => ({
-		name: entry.name, // Customize the display name if needed
-		value: entry.name
-	}));
-
+import templates from '../templates.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
 const initialText = 'create@makro executed!';
@@ -45,7 +31,23 @@ inquirer
 			type: 'list',
 			choices: templates,
 			name: 'chooseTemplate',
-			message: 'Choose Template'
+			message: 'Choose Template',
+			loop: true,
+			theme: {
+				style: {
+					highlight: (str) => {
+						try {
+							const color = templates.find((template) => template.name === str.slice(2)).color;
+							return chalk.hex(color)(str);
+						} catch {
+							return chalk.hex('#fce566')(str);
+						}
+					}
+				},
+				icon: {
+					cursor: "➤"
+				}
+			},			
 		},
 		{
 			type: 'list',
