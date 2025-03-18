@@ -1,38 +1,56 @@
-# create-svelte
+# Frontend Makro Documentation
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Overview
 
-## Creating a project
+**Frontend Makro** is an all-in-one collection of pre-setup frontend templates and tools designed to help you quickly start modern frontend projects.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Usage
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+To create a project run the command:
 
-# create a new project in my-app
-npm create svelte@latest my-app
+```sh
+npx create-makro@latest
 ```
 
-## Developing
+Then follow the interactive prompts. For more details on its implementation, check [packages/README.md](packages/README.md).
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Templates
 
-```bash
-npm run dev
+| Template  | Tech Stack                                  |
+| --------- | ------------------------------------------- |
+| **React** | TypeScript, ShadcnUI, Axios, TanStack Query |
+| **Vue**   | TypeScript, ShadcnUI, Axios, TanStack Query |
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Each template includes
+**routing**,
+**localization**,
+**data fetching** and all others necessary things with best practices.
+
+## Project Structure
+
+Below is an abbreviated folder structure:
+
+```
+...
+packages/
+  ├── cli/
+  └── templates/
+        ├── react-std/
+        └── vue-std/
+src/
+static/
+...
 ```
 
-## Building
+For a complete view, please refer to the project root.
 
-To create a production version of your app:
+## Contributing
 
-```bash
-npm run build
-```
+Contributions are welcome! Feel free to open issues or submit pull requests to improve the documentation, add features, or fix bugs.
 
-You can preview the production build with `npm run preview`.
+**It's really important to follow instructions of**
+[Contribution Guide](packages/README.md).
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
