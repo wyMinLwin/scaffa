@@ -49,7 +49,7 @@ For a complete view, please refer to the project root.
 Contributions are welcome! Feel free to open issues or submit pull requests to improve the documentation, add features, or fix bugs.
 
 **It's really important to follow instructions of**
-[Contribution Guide](packages/README.md).
+[Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
