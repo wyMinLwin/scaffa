@@ -2,7 +2,9 @@
 
 ## Setup
 
-**Clone the project**
+- **Fork the project**
+- **Clone it from your repository**
+
 ### CLI Package
 
 Change path to CLI directory
