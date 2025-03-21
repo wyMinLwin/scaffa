@@ -1,4 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap')
+layer(base);
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #222222;
+  --color-primary: #fce566;
+  --color-border: #282828;
+  --color-mute: #b2afab;
+  --color-light: #f7f1ff;
+  --color-dark: #211f22;
+  --color-error: #fc608c;
+
+  --font-display: 'Rubik', sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
