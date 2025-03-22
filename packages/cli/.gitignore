@@ -12,10 +12,9 @@ node_modules
 Thumbs.db
 
 # Env
-.env
-.env.*
-!.env.example
-!.env.test
+#did not ignore .env.dev for development environment and it's not confidential
+!.env.dev
+
 
 # Vite
 vite.config.js.timestamp-*

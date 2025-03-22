@@ -8,6 +8,7 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
+import 'dotenv/config'
 import templates from '../templates.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
@@ -45,9 +46,9 @@ inquirer
 					}
 				},
 				icon: {
-					cursor: "➤"
+					cursor: '➤'
 				}
-			},			
+			}
 		},
 		{
 			type: 'list',
@@ -57,7 +58,7 @@ inquirer
 		}
 	])
 	.then((answers) => {
-		cloneRepo(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
+		generateTemplate(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
 	})
 	.catch(() => {
 		console.log(chalk.hex('#eb392d')('Goodbye!'));
@@ -78,41 +79,58 @@ const generateCommand = (packageManager) => {
 	}
 };
 
+// Copy files recursively
+const copyFiles = async (src, dest, destRoot) => {
+	const entries = await fs.promises.readdir(src, { withFileTypes: true });
+	for (let entry of entries) {
+		const srcPath = path.join(src, entry.name);
+		// Skip copying if srcPath is the destination folder
+		if (destRoot && path.resolve(srcPath) === path.resolve(destRoot)) {
+			continue;
+		}
+		const destPath = path.join(dest, entry.name);
+		if (entry.name === 'node_modules') {
+			continue;
+		}
+		if (entry.isDirectory()) {
+			await fs.promises.mkdir(destPath, { recursive: true });
+			await copyFiles(srcPath, destPath, destRoot);
+		} else {
+			await fs.promises.copyFile(srcPath, destPath);
+		}
+	}
+};
+
 // Clone the repository and copy the template files
-const cloneRepo = async (projectName, template, packageManager) => {
+const cloneRepo = async (projectName) => {
 	cloneSpinner.start();
-	await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
+	if ( process.env.LOCAL === 'true') {
+		await copyLocalRepo(projectName);
+	} else {
+		await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
+	}
 	cloneSpinner.stop();
+};
 
-	// Change directory to the cloned project
-	process.chdir(projectName);
+const copyLocalRepo = async (projectName) => {
+	const localRepoPath = path.join(process.cwd(), '../../');
+	await fs.promises.mkdir(projectName, { recursive: false });
+	await copyFiles(localRepoPath, projectName, projectName);
+};
 
+// Copy Temporary Selected Template into
+const copyTemporarilySelectedTemplate = async (template, projectRootPath) => {
 	// Path to the template files
 	const templatePath = path.join(process.cwd(), 'packages', 'templates', template);
-	const projectRootPath = process.cwd();
-
-	// Copy files recursively
-	const copyFiles = async (src, dest) => {
-		const entries = await fs.promises.readdir(src, { withFileTypes: true });
-		for (let entry of entries) {
-			const srcPath = path.join(src, entry.name);
-			const destPath = path.join(dest, entry.name);
-			if (entry.isDirectory()) {
-				await fs.promises.mkdir(destPath, { recursive: true });
-				await copyFiles(srcPath, destPath);
-			} else {
-				await fs.promises.copyFile(srcPath, destPath);
-			}
-		}
-	};
-
 	initializingSpinner.start();
-
 	// Copy template files to a temporary location
 	const tempDir = path.join(projectRootPath, 'temp');
 	await fs.promises.mkdir(tempDir, { recursive: true });
 	await copyFiles(templatePath, tempDir);
+	return tempDir;
+};
 
+const cleanUp = async (projectRootPath) => {
 	// Remove all files in the root of the cloned project (except temp)
 	const rootEntries = await fs.promises.readdir(projectRootPath, {
 		withFileTypes: true
@@ -125,11 +143,15 @@ const cloneRepo = async (projectName, template, packageManager) => {
 			await fs.promises.unlink(entryPath);
 		}
 	}
+};
 
+const moveTempFilesIntoRoot = async (tempDir, projectRootPath) => {
 	// Paste the copied files into the root of the cloned project
-	await copyFiles(tempDir, projectRootPath);
+	await copyFiles(tempDir, projectRootPath, projectRootPath);
 	await fs.promises.rm(tempDir, { recursive: true, force: true });
+};
 
+const changePackageJSON = async (projectRootPath, projectName) => {
 	// Update package.json with the new project name
 	const packageJsonPath = path.join(projectRootPath, 'package.json');
 	try {
@@ -140,9 +162,9 @@ const cloneRepo = async (projectName, template, packageManager) => {
 	} catch (err) {
 		console.log(chalk.red('Failed to update package.json:'), err);
 	}
+};
 
-	initializingSpinner.stop();
-
+const installDependencies = async (packageManager) => {
 	console.log(chalk.blue('~ Installing Dependencies... ~'));
 	const installProcess = spawn(generateCommand(packageManager), {
 		stdio: 'inherit',
@@ -156,4 +178,25 @@ const cloneRepo = async (projectName, template, packageManager) => {
 			console.log(chalk.redBright('\n\nSomething went wrong!'));
 		}
 	});
+};
+
+const generateTemplate = async (projectName, template, packageManager) => {
+	
+	await cloneRepo(projectName);
+
+	// Change directory to the cloned project
+	process.chdir(projectName);
+	const projectRootPath = process.cwd();
+
+	const tempDir = await copyTemporarilySelectedTemplate(template, projectRootPath);
+
+	await cleanUp(projectRootPath);
+
+	await moveTempFilesIntoRoot(tempDir, projectRootPath);
+
+	await changePackageJSON(projectRootPath, projectName);
+
+	initializingSpinner.stop();
+
+	await installDependencies(packageManager);
 };

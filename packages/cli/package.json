@@ -1,6 +1,6 @@
 {
   "name": "create-makro",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "All in one pre setup frontend templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
@@ -19,11 +19,13 @@
   "keywords": [
     "frontend",
     "templates",
-    "react", "vue"
+    "react",
+    "vue"
   ],
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
+    "dotenv": "^16.4.7",
     "gradient-string": "^3.0.0",
     "inquirer": "^12.0.0",
     "nanospinner": "^1.1.0",
