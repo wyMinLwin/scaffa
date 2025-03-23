@@ -8,7 +8,7 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
-import 'dotenv/config'
+import 'dotenv/config';
 import templates from '../templates.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
@@ -104,7 +104,7 @@ const copyFiles = async (src, dest, destRoot) => {
 // Clone the repository and copy the template files
 const cloneRepo = async (projectName) => {
 	cloneSpinner.start();
-	if ( process.env.LOCAL === 'true') {
+	if (process.env.LOCAL === 'true') {
 		await copyLocalRepo(projectName);
 	} else {
 		await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
@@ -121,12 +121,12 @@ const copyLocalRepo = async (projectName) => {
 // Copy Temporary Selected Template into
 const copyTemporarilySelectedTemplate = async (template, projectRootPath) => {
 	// Path to the template files
-	const templatePath = path.join(process.cwd(), 'packages', 'templates', template);
+	const templatePath = path.join(process.cwd(), 'packages/create-makro/templates', template);
 	initializingSpinner.start();
 	// Copy template files to a temporary location
 	const tempDir = path.join(projectRootPath, 'temp');
 	await fs.promises.mkdir(tempDir, { recursive: true });
-	await copyFiles(templatePath, tempDir);
+	await copyFiles(templatePath, tempDir, tempDir);
 	return tempDir;
 };
 
@@ -181,9 +181,7 @@ const installDependencies = async (packageManager) => {
 };
 
 const generateTemplate = async (projectName, template, packageManager) => {
-	
 	await cloneRepo(projectName);
-
 	// Change directory to the cloned project
 	process.chdir(projectName);
 	const projectRootPath = process.cwd();
