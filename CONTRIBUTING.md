@@ -9,7 +9,7 @@
 
 Change path to CLI directory
 ```sh
-cd packages/cli
+cd packages/create-makro
 ```
 Install dependencies for CLI
 ```sh
@@ -19,7 +19,7 @@ Run CLI locally
 ```sh
 pnpm start
 ```
-See [Guide](packages/CONTRIBUTING.md) to create your own templates.
+See [Guide](packages/create-makro/CONTRIBUTING.md) to create your own templates.
 
 ### Root Project
 

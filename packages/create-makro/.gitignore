@@ -12,8 +12,8 @@ node_modules
 Thumbs.db
 
 # Env
-#did not ignore .env.dev for development environment and it's not confidential
-!.env.dev
+#did not ignore .env for development environment and it's not confidential
+!.env
 
 
 # Vite

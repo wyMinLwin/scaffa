@@ -2,8 +2,8 @@
 
 ## Todo
 
-1. Create new project as you want in **packages/templates**.
-2. Add new template object as show in below in **package/cli/templates.js**
+1. Create new project as you want in **packages/create-makro/templates**.
+2. Add new template object as show in below in **packages/create-makro/templates.js**
 ```
 export default [
     ...,

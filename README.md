@@ -12,7 +12,7 @@ To create a project run the command:
 npx create-makro@latest
 ```
 
-Then follow the interactive prompts. For more details on its implementation, check [CLI Implementation](packages/README.md).
+Then follow the interactive prompts. For more details on its implementation, check [CLI Implementation](packages/create-makro/README.md).
 
 ## Templates
 
@@ -33,8 +33,10 @@ Below is an abbreviated folder structure:
 ```
 ...
 packages/
-  ├── cli/
-  └── templates/
+└── create-makro/
+    └── bin/
+        └── index.js
+    └── templates/
         ├── react-std/
         └── vue-std/
 src/

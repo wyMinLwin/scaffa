@@ -8,7 +8,7 @@ This directory contains the core packages for the Frontend Makro project. Each p
 
 ### CLI
 
-**Path:** `packages/cli`
+**Path:** `packages/create-makro`
 
 The CLI package provides a command-line interface for creating and managing frontend projects using the predefined templates.
 
@@ -31,4 +31,4 @@ When you run the above command, you will be prompted to:
 
 ## License
 
-This project is licensed under the [MIT License](../LICENSE).
+This project is licensed under the [MIT License](../../LICENSE).
