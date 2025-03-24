@@ -57,8 +57,40 @@ inquirer
 			message: 'Choose Package Manager'
 		}
 	])
-	.then((answers) => {
-		generateTemplate(answers.projectName, answers.chooseTemplate, answers.choosePackageManager);
+	.then((basicAnswers) => {
+		// check options exist for the selected template
+		const options = templates.find(
+			(template) => template.value === basicAnswers.chooseTemplate
+		).options;
+		if (options) {
+			inquirer
+				.prompt([
+					{
+						type: 'list',
+						choices: options,
+						name: 'chooseTemplateType',
+						message: 'Choose Template Type'
+					}
+				])
+				.then((optionAnswers) => {
+					generateTemplate(
+						basicAnswers.projectName,
+						basicAnswers.chooseTemplate,
+						basicAnswers.choosePackageManager,
+						optionAnswers.chooseTemplateType
+					);
+				})
+				.catch(() => {
+					console.log(chalk.hex('#eb392d')('Goodbye!'));
+				});
+		} else {
+			generateTemplate(
+				basicAnswers.projectName,
+				basicAnswers.chooseTemplate,
+				basicAnswers.choosePackageManager,
+				null
+			);
+		}
 	})
 	.catch(() => {
 		console.log(chalk.hex('#eb392d')('Goodbye!'));
@@ -119,9 +151,11 @@ const copyLocalRepo = async (projectName) => {
 };
 
 // Copy Temporary Selected Template into
-const copyTemporarilySelectedTemplate = async (template, projectRootPath) => {
+const copyTemporarilySelectedTemplate = async (template, projectRootPath, templateType) => {
 	// Path to the template files
-	const templatePath = path.join(process.cwd(), 'packages/create-makro/templates', template);
+	const templatePath = templateType
+		? path.join(process.cwd(), 'packages/create-makro/templates', template, templateType)
+		: path.join(process.cwd(), 'packages/create-makro/templates', template);
 	initializingSpinner.start();
 	// Copy template files to a temporary location
 	const tempDir = path.join(projectRootPath, 'temp');
@@ -180,13 +214,13 @@ const installDependencies = async (packageManager) => {
 	});
 };
 
-const generateTemplate = async (projectName, template, packageManager) => {
+const generateTemplate = async (projectName, template, packageManager, templateType) => {
 	await cloneRepo(projectName);
 	// Change directory to the cloned project
 	process.chdir(projectName);
 	const projectRootPath = process.cwd();
 
-	const tempDir = await copyTemporarilySelectedTemplate(template, projectRootPath);
+	const tempDir = await copyTemporarilySelectedTemplate(template, projectRootPath, templateType);
 
 	await cleanUp(projectRootPath);
 
