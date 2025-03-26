@@ -12,7 +12,7 @@ const HomeView = () => {
 	const todosQuery = api.todos.getTodos.useInfiniteQuery();
 	return (
 		<div>
-			<h1 className="">Template: React-std</h1>
+			<h1 className="">Template: React-std-colorful</h1>
 			<p>Tech Stack: React + Shadcn UI</p>
 			<p>{t('common.hello')}</p>
 			<div className="flex gap-2">
