@@ -12,51 +12,72 @@ import 'dotenv/config';
 import templates from '../templates.js';
 
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
-const initialText = 'create@makro executed!';
+const aliasSchema = {
+	name: null
+};
+
+// CLI validation
+const validateCLI = () => {
+	if (process.argv.length >= 3) {
+		let projectNameFromArgv = process.argv[2];
+		if (projectNameFromArgv && /^(?![-_])[A-Za-z0-9-_]+(?<![-_])$/.test(projectNameFromArgv)) {
+			aliasSchema.name = projectNameFromArgv;
+		} else {
+			console.error(chalk.red('Invalid project name provided via command line.'));
+			process.exit(1);
+		}
+	}
+};
+
+const initialText = 'create-makro executed!';
+
 console.log(chalk.bold(gradientText(initialText)));
 console.log(chalk(gradientText('-'.repeat(initialText.length))));
 
+validateCLI();
+
+const basicQuestions = [
+	{
+		message: 'Enter your project name?',
+		name: 'projectName',
+		validate: (input) =>
+			/^(?![-_])[A-Za-z0-9-_]+(?<![-_])$/.test(input) ? true : 'Please enter a valid project name',
+		when: aliasSchema.name === null,
+		default: 'frontend-makro-starter'
+	},
+	{
+		type: 'list',
+		choices: templates,
+		name: 'chooseTemplate',
+		message: 'Choose Template',
+		loop: true,
+		theme: {
+			style: {
+				highlight: (str) => {
+					try {
+						const color = templates.find((template) => template.name === str.slice(2)).color;
+						return chalk.hex(color)(str);
+					} catch {
+						return chalk.hex('#fce566')(str);
+					}
+				}
+			},
+			icon: {
+				cursor: '➤'
+			}
+		}
+	},
+	{
+		type: 'list',
+		choices: ['NPM', 'PNPM'],
+		name: 'choosePackageManager',
+		message: 'Choose Package Manager'
+	}
+];
+
 // Prompt user for project name and template
 inquirer
-	.prompt([
-		{
-			message: 'Enter your project name?',
-			name: 'projectName',
-			validate: (input) =>
-				/^(?![-_])[A-Za-z0-9-_]+(?<![-_])$/.test(input)
-					? true
-					: 'Please enter a valid project name',
-			default: 'frontend-makro-starter'
-		},
-		{
-			type: 'list',
-			choices: templates,
-			name: 'chooseTemplate',
-			message: 'Choose Template',
-			loop: true,
-			theme: {
-				style: {
-					highlight: (str) => {
-						try {
-							const color = templates.find((template) => template.name === str.slice(2)).color;
-							return chalk.hex(color)(str);
-						} catch {
-							return chalk.hex('#fce566')(str);
-						}
-					}
-				},
-				icon: {
-					cursor: '➤'
-				}
-			}
-		},
-		{
-			type: 'list',
-			choices: ['NPM', 'PNPM'],
-			name: 'choosePackageManager',
-			message: 'Choose Package Manager'
-		}
-	])
+	.prompt(basicQuestions)
 	.then((basicAnswers) => {
 		// check options exist for the selected template
 		const options = templates.find(
@@ -74,7 +95,7 @@ inquirer
 				])
 				.then((optionAnswers) => {
 					generateTemplate(
-						basicAnswers.projectName,
+						aliasSchema.name ?? basicAnswers.projectName,
 						basicAnswers.chooseTemplate,
 						basicAnswers.choosePackageManager,
 						optionAnswers.chooseTemplateType
@@ -85,7 +106,7 @@ inquirer
 				});
 		} else {
 			generateTemplate(
-				basicAnswers.projectName,
+				aliasSchema.name ?? basicAnswers.projectName,
 				basicAnswers.chooseTemplate,
 				basicAnswers.choosePackageManager,
 				null
