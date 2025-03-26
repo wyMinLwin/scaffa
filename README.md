@@ -33,12 +33,10 @@ Below is an abbreviated folder structure:
 ```
 ...
 packages/
-└── create-makro/
-    └── bin/
-        └── index.js
-    └── templates/
-        ├── react-std/
-        └── vue-std/
+├── create-makro/
+│   ├── bin/
+│   │   └── index.js
+│   └── templates/
 src/
 static/
 ...
