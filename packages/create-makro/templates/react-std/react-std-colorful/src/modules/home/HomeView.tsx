@@ -13,6 +13,7 @@ const HomeView = () => {
 	return (
 		<div>
 			<h1 className="">Template: React-std-colorful</h1>
+			<h2 className="">UI Implementation of react-std-colorful is still in progress...</h2>
 			<p>Tech Stack: React + Shadcn UI</p>
 			<p>{t('common.hello')}</p>
 			<div className="flex gap-2">
