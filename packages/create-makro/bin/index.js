@@ -132,6 +132,7 @@ const generateCommand = (packageManager) => {
 	}
 };
 
+const copyIgnoreList = ["node_modules", ".vercel", '.svelte-kit', '.build',];
 // Copy files recursively
 const copyFiles = async (src, dest, destRoot) => {
 	const entries = await fs.promises.readdir(src, { withFileTypes: true });
@@ -142,7 +143,7 @@ const copyFiles = async (src, dest, destRoot) => {
 			continue;
 		}
 		const destPath = path.join(dest, entry.name);
-		if (entry.name === 'node_modules') {
+		if (copyIgnoreList.includes(entry.name)) {
 			continue;
 		}
 		if (entry.isDirectory()) {
