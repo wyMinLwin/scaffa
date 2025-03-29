@@ -11,20 +11,51 @@ import { spawn } from 'child_process';
 import 'dotenv/config';
 import templates from '../templates.js';
 
+const availablePackageManagers = [
+	{ name: 'NPM', value: 'npm' },
+	{ name: 'PNPM', value: 'pnpm' }
+];
+
 const gradientText = gradient(['#f7cb45', '#f08b33', '#f25d27']);
 const aliasSchema = {
-	name: null
+	name: null,
+	template: null,
+	packageManager: null
+};
+
+// Helper to fetch argument values for given flags
+const getArgValue = (flags) => {
+	const index = process.argv.findIndex((arg) => flags.includes(arg));
+	return index !== -1 ? process.argv[index + 1] : null;
 };
 
 // CLI validation
 const validateCLI = () => {
+	if (process.argv.length >= 4) {
+		const templateFromArgv = getArgValue(['--template', '-t']);
+		if (templateFromArgv && templates.some((template) => template.value === templateFromArgv)) {
+			aliasSchema.template = templateFromArgv;
+		} else if (templateFromArgv) {
+			console.warn(chalk.hex('#ea7000')('Invalid template.'));
+		}
+
+		const packageManagerFromArgv = getArgValue(['--package', '-p']);
+		if (
+			packageManagerFromArgv &&
+			availablePackageManagers.some((p) => p.value === packageManagerFromArgv)
+		) {
+			aliasSchema.packageManager = packageManagerFromArgv;
+		} else if (packageManagerFromArgv) {
+			console.warn(chalk.hex('#ea7000')('Invalid package manager.'));
+		}
+	}
+
 	if (process.argv.length >= 3) {
-		let projectNameFromArgv = process.argv[2];
+		const projectNameFromArgv = process.argv[2];
 		if (projectNameFromArgv && /^(?![-_])[A-Za-z0-9-_]+(?<![-_])$/.test(projectNameFromArgv)) {
 			aliasSchema.name = projectNameFromArgv;
-		} else {
-			console.error(chalk.red('Invalid project name provided via command line.'));
-			process.exit(1);
+		} else if (process.argv.length < 4) {
+			console.warn(chalk.hex('#ea7000')('Invalid project name.'));
 		}
 	}
 };
@@ -51,6 +82,7 @@ const basicQuestions = [
 		name: 'chooseTemplate',
 		message: 'Choose Template',
 		loop: true,
+		when: aliasSchema.template === null,
 		theme: {
 			style: {
 				highlight: (str) => {
@@ -62,16 +94,15 @@ const basicQuestions = [
 					}
 				}
 			},
-			icon: {
-				cursor: '➤'
-			}
+			icon: { cursor: '➤' }
 		}
 	},
 	{
 		type: 'list',
-		choices: ['NPM', 'PNPM'],
+		choices: availablePackageManagers,
 		name: 'choosePackageManager',
-		message: 'Choose Package Manager'
+		message: 'Choose Package Manager',
+		when: aliasSchema.packageManager === null
 	}
 ];
 
@@ -81,8 +112,8 @@ inquirer
 	.then((basicAnswers) => {
 		// check options exist for the selected template
 		const options = templates.find(
-			(template) => template.value === basicAnswers.chooseTemplate
-		).options;
+			(template) => template.value === (aliasSchema.template ?? basicAnswers.chooseTemplate)
+		)?.options;
 		if (options) {
 			inquirer
 				.prompt([
@@ -96,8 +127,8 @@ inquirer
 				.then((optionAnswers) => {
 					generateTemplate(
 						aliasSchema.name ?? basicAnswers.projectName,
-						basicAnswers.chooseTemplate,
-						basicAnswers.choosePackageManager,
+						aliasSchema.template ?? basicAnswers.chooseTemplate,
+						aliasSchema.packageManager ?? basicAnswers.choosePackageManager,
 						optionAnswers.chooseTemplateType
 					);
 				})
@@ -107,8 +138,8 @@ inquirer
 		} else {
 			generateTemplate(
 				aliasSchema.name ?? basicAnswers.projectName,
-				basicAnswers.chooseTemplate,
-				basicAnswers.choosePackageManager,
+				aliasSchema.template ?? basicAnswers.chooseTemplate,
+				aliasSchema.packageManager ?? basicAnswers.choosePackageManager,
 				null
 			);
 		}
@@ -123,16 +154,16 @@ const initializingSpinner = createSpinner('Initializing Repository...');
 //generate command based on package manager
 const generateCommand = (packageManager) => {
 	switch (packageManager) {
-		case 'NPM':
+		case 'npm':
 			return 'npm install --legacy-peer-deps';
-		case 'PNPM':
+		case 'pnpm':
 			return 'pnpm install';
 		default:
 			return 'npm install --legacy-peer-deps';
 	}
 };
 
-const copyIgnoreList = ["node_modules", ".vercel", '.svelte-kit', '.build',];
+const copyIgnoreList = ['node_modules', '.vercel', '.svelte-kit', '.build'];
 // Copy files recursively
 const copyFiles = async (src, dest, destRoot) => {
 	const entries = await fs.promises.readdir(src, { withFileTypes: true });
@@ -243,14 +274,9 @@ const generateTemplate = async (projectName, template, packageManager, templateT
 	const projectRootPath = process.cwd();
 
 	const tempDir = await copyTemporarilySelectedTemplate(template, projectRootPath, templateType);
-
 	await cleanUp(projectRootPath);
-
 	await moveTempFilesIntoRoot(tempDir, projectRootPath);
-
 	await changePackageJSON(projectRootPath, projectName);
-
 	initializingSpinner.stop();
-
 	await installDependencies(packageManager);
 };
