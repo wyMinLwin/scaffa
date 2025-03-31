@@ -26,16 +26,28 @@ const HomeView = () => {
 			) : (
 				<div>{productsQuery.data?.map((item) => <div key={item.id}>{item.title}</div>)}</div>
 			)}
-			
-			<hr className='my-5'></hr>
+
+			<hr className="my-5"></hr>
 
 			<h2>Todos</h2>
-			<div>{todosQuery.data?.map((todo,todoIndex) => <div key={todo.id}>{todoIndex+1} . {todo.todo}</div>)}</div>
-			{todosQuery.hasNextPage && <Button
-				onClick={() => {
-					todosQuery.fetchNextPage();
-				}}
-			>Next</Button>}
+			<div>
+				{todosQuery.data?.map((todo, todoIndex) => (
+					<div key={todo.id}>
+						{todoIndex + 1} . {todo.todo}
+					</div>
+				))}
+			</div>
+			{todosQuery.hasNextPage ? (
+				<Button
+					onClick={() => {
+						todosQuery.fetchNextPage();
+					}}
+				>
+					Next
+				</Button>
+			) : (
+				'No more data...'
+			)}
 		</div>
 	);
 };

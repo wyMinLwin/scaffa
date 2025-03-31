@@ -32,11 +32,17 @@ const HomeView = () => {
 
 			<h2>Todos</h2>
 			<div>{todosQuery.data?.map((todo,todoIndex) => <div key={todo.id}>{todoIndex+1} . {todo.todo}</div>)}</div>
-			{todosQuery.hasNextPage && <Button
-				onClick={() => {
-					todosQuery.fetchNextPage();
-				}}
-			>Next</Button>}
+			{todosQuery.hasNextPage ? (
+				<Button
+					onClick={() => {
+						todosQuery.fetchNextPage();
+					}}
+				>
+					Next
+				</Button>
+			) : (
+				'No more data...'
+			)}
 		</div>
 	);
 };
