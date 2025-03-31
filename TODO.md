@@ -1,6 +1,8 @@
 ## TODO List
 
-- Update Documentation for **scaffold**
+- Update Documentation for **scaffold**.
+
+- To create a **json** for generated template data.
 
 - To create Colorful UIs for **react-std** and **vue-std** templates.
 
