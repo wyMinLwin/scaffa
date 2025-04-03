@@ -14,12 +14,29 @@ npx create-makro@latest
 
 Then follow the interactive prompts. For more details on its implementation, check [CLI Implementation](packages/create-makro/README.md).
 
+## Scaffold
+
+You can even create a project easily with scaffold feature.
+
+```sh
+npx create-makro@latest <ur-project-name> -t <template> -p <package-manager>
+```
+**Example**
+
+```sh
+npx create-makro@latest makro-starter -t vue-std -p pnpm
+```
+
+This single line of command will create a Vue template with the name makro-starter and handle dependencies with pnpm. You can see the availables table in **[Templates](#templates)**.
+
+**Note that if we have option to select templates it will ask you one more question to choose option!**
+
 ## Templates
 
 | Template  | Tech Stack                                  |
 | --------- | ------------------------------------------- |
-| **React** | TypeScript, ShadcnUI, Axios, TanStack Query |
-| **Vue**   | TypeScript, ShadcnUI, Axios, TanStack Query |
+| **react-std** | TypeScript, ShadcnUI, Axios, TanStack Query |
+| **vue-std**   | TypeScript, ShadcnUI, Axios, TanStack Query |
 
 Each template includes
 **routing**,

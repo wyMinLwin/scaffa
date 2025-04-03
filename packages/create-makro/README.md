@@ -22,6 +22,21 @@ The CLI package provides a command-line interface for creating and managing fron
 npx create-makro@latest
 ```
 
+### Scaffold
+
+You can even create a project easily with scaffold feature.
+
+```sh
+npx create-makro@latest <ur-project-name> -t <template> -p <package-manager>
+```
+**Example**
+
+```sh
+npx create-makro@latest makro-starter -t vue-std -p pnpm
+```
+
+**Check available templates [here](../../README.md#templates).**
+
 When you run the above command, you will be prompted to:
 
 1. **Enter your project name:** Provide a name for your new project.
