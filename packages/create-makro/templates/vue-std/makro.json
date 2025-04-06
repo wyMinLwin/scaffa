@@ -1,0 +1,5 @@
+{
+    "template": "vue-std",
+    "library": "vue",
+    "support-makro": true
+}
