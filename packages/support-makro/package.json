@@ -1,0 +1,35 @@
+{
+  "name": "support-makro",
+  "version": "0.0.1",
+  "description": "Support tools for creating and managing makro templates",
+  "author": "Wai Yan Min Lwin",
+  "main": "bin/index.js",
+  "type": "module",
+  "private": false,
+  "bin": {
+    "support-makro": "bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wyMinLwin/frontend-makro.git"
+  },
+  
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [
+    "frontend-makro",
+    "create-makro",
+    "support-makro",
+    "react",
+    "vue",
+    "templates"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    
+  }
+}
