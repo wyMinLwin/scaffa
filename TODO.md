@@ -4,6 +4,4 @@
 
 - To create another **cli package** for to create modules, view and api query.
 
-- Set up new **npm package** and **register** it npm.
-
 - Update **Documentation website**.
