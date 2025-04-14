@@ -5,5 +5,3 @@
 - To create another **cli package** for to create modules, view and api query.
 
 - Update **Documentation website**.
-
-- Re-write **marko.json** into **marko.config.js**
