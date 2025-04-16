@@ -6,4 +6,4 @@
 
 - Update **Documentation website**.
 
-- Re-write **marko.json** into **marko.config.js**
+-  Rewrite logic for local with `pnpm dev` instead of **`.env`**
