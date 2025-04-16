@@ -1,6 +1,6 @@
 {
   "name": "support-makro",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Support tools for creating and managing makro templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
@@ -15,7 +15,8 @@
   },
   
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev": "node ."
   },
   "keywords": [
     "frontend-makro",
