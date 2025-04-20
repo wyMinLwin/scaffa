@@ -189,7 +189,7 @@ const copyFiles = async (src, dest, destRoot) => {
 // Clone the repository and copy the template files
 const cloneRepo = async (projectName) => {
 	cloneSpinner.start();
-	if (process.env.LOCAL === 'true') {
+	if (process.env.npm_lifecycle_event === 'dev') {
 		await copyLocalRepo(projectName);
 	} else {
 		await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
