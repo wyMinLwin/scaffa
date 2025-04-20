@@ -17,7 +17,7 @@ pnpm install
 ```
 Run CLI locally
 ```sh
-pnpm start
+pnpm dev
 ```
 See [Guide](packages/create-makro/CONTRIBUTING.md) to create your own templates.
 
