@@ -47,17 +47,15 @@ Each template includes
 
 Below is an abbreviated folder structure:
 
-```
-...
-packages/
-├── create-makro/
-│   ├── bin/
-│   │   └── index.js
-│   └── templates/
-src/
-static/
-...
-```
+    ...
+    packages/
+    ├── create-makro/
+    │   ├── bin/
+    │   │   └── index.js
+    │   └── templates/
+    src/
+    static/
+    ...
 
 For a complete view, please refer to the project root.
 
