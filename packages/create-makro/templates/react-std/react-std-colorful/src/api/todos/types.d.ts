@@ -1,11 +1,11 @@
-export type TodoType = {
+type TodoType = {
 	id: number;
 	todo: string;
 	completed: boolean;
 	userId: number;
 };
 
-export type TodoResponseType = {
+type TodoResponseType = {
 	todos: TodoType[];
 	total: number;
 	skip: number;

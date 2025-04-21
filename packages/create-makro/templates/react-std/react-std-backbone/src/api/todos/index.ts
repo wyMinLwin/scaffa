@@ -1,5 +1,4 @@
 import { useInfiniteQuery, UseInfiniteQueryOptions } from '@tanstack/react-query';
-import { TodoResponseType, TodoType } from './types';
 import axios from 'axios';
 
 export const getTodos = {
@@ -11,14 +10,9 @@ export const getTodos = {
 				return request.data;
 			},
 			initialPageParam: 0,
-			getNextPageParam: (lastPage) =>  lastPage.todos.length < 50 ? undefined : lastPage.skip + 50,
+			getNextPageParam: (lastPage) => (lastPage.todos.length < 50 ? undefined : lastPage.skip + 50),
 			select: (data) => data.pages.flatMap((page) => page.todos),
 			...opt
 		});
 	}
 };
-
-//queryFn: async ({pageParam}) => {
-//     const request = await axios.get(`todos?limit=20&skip=0`);
-//     return [];
-// },

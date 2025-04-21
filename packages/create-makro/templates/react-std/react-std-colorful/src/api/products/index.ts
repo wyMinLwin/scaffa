@@ -1,4 +1,3 @@
-import { ProductType } from '@/shared/types';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import axios from 'axios';
 

@@ -1,5 +1,4 @@
 import { useInfiniteQuery, UseInfiniteQueryOptions } from '@tanstack/react-query';
-import { TodoResponseType, TodoType } from './types';
 import axios from 'axios';
 
 export const getTodos = {
@@ -18,7 +17,3 @@ export const getTodos = {
 	}
 };
 
-//queryFn: async ({pageParam}) => {
-//     const request = await axios.get(`todos?limit=20&skip=0`);
-//     return [];
-// },
