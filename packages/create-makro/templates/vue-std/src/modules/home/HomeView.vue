@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import api from '@/api';
+import Button from '@/components/ui/button/Button.vue';
 import { useI18n } from 'vue-i18n';
 
   const {t, locale} = useI18n();
@@ -15,8 +16,8 @@ import { useI18n } from 'vue-i18n';
     <h1>{{ t("common.hello") }}</h1>
     <p>Welcome to the Home page</p>
     <div class="flex gap-2">
-      <button class="bg-yellow-400 text-black h-8 px-2 rounded-md font-medium" @click="changeLanguage('en')">English</button>
-      <button class="bg-yellow-400 text-black h-8 px-2 rounded-md font-medium" @click="changeLanguage('mm')">Myanmar</button>
+      <Button @click="changeLanguage('en')">English</Button>
+      <Button @click="changeLanguage('mm')">Myanmar</Button>
     </div>
 
     <br/>
