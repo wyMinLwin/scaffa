@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
     "@tanstack/vue-query": "^5.64.2",
+    "@vueuse/core": "^13.1.0",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -27,7 +28,8 @@
     "tw-animate-css": "^1.2.8",
     "vue": "^3.5.13",
     "vue-i18n": "10",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vue-sonner": "^1.3.2"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

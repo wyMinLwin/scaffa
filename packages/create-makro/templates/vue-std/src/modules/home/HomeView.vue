@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import api from '@/api'
 import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
 import { useQueryClient } from '@tanstack/vue-query'
-import { onMounted } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { toast } from 'vue-sonner'
 
 const { t, locale } = useI18n()
 const changeLanguage = (lang: string) => {
@@ -13,18 +15,22 @@ const changeLanguage = (lang: string) => {
 const queryClient = useQueryClient()
 
 const { data, isLoading } = api.products.getProducts.useQuery()
+const input = ref('')
 
-const { mutate } = api.products.addProduct.useMutation({
+const { mutate, isPending } = api.products.addProduct.useMutation({
   onSuccess: (product) => {
     queryClient.setQueryData(['products'], (oldData: any) => {
       return [...oldData, product]
     })
+    input.value = ''
+    toast.success('Product added successfully!')
   },
 })
 
 const addProduct = () => {
+  if (!input.value) return
   mutate({
-    title: 'Test Product',
+    title: input.value,
     description: 'Test',
     category: 'Test',
     price: 129.99,
@@ -55,8 +61,15 @@ const addProduct = () => {
 
     <br />
 
-    <div>
-      <Button @click="addProduct()">Add Product</Button>
+    <div class="flex gap-2">
+      <Input
+        :disabled="isPending"
+        class="w-40"
+        v-model="input"
+        placeholder="Type something..."
+        aria-label="input field"
+      />
+      <Button :disabled="isPending" @click="addProduct()">Add Product</Button>
     </div>
 
     <br />
@@ -64,7 +77,7 @@ const addProduct = () => {
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div v-for="(product, index) in data" :key="product.id">
-        <p>{{ index + ' ' + product.title }}</p>
+        <p>{{ (index+1) + '.' + product.title }}</p>
       </div>
     </div>
   </section>
