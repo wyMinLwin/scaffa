@@ -14,6 +14,9 @@ importers:
       '@tanstack/vue-query':
         specifier: ^5.64.2
         version: 5.64.2(vue@3.5.13(typescript@5.7.3))
+      '@vueuse/core':
+        specifier: ^13.1.0
+        version: 13.1.0(vue@3.5.13(typescript@5.7.3))
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -53,6 +56,9 @@ importers:
       vue-router:
         specifier: ^4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
+      vue-sonner:
+        specifier: ^1.3.2
+        version: 1.3.2
     devDependencies:
       '@tsconfig/node22':
         specifier: ^22.0.0
@@ -911,11 +917,24 @@ packages:
   '@vueuse/core@12.8.2':
     resolution: {integrity: sha512-HbvCmZdzAu3VGi/pWYm5Ut+Kd9mn1ZHnn4L5G8kOQTPs/IwIAmJoBrmYk2ckLArgMXZj0AW3n5CAejLUO+PhdQ==}
 
+  '@vueuse/core@13.1.0':
+    resolution: {integrity: sha512-PAauvdRXZvTWXtGLg8cPUFjiZEddTqmogdwYpnn60t08AA5a8Q4hZokBnpTOnVNqySlFlTcRYIC8OqreV4hv3Q==}
+    peerDependencies:
+      vue: ^3.5.0
+
   '@vueuse/metadata@12.8.2':
     resolution: {integrity: sha512-rAyLGEuoBJ/Il5AmFHiziCPdQzRt88VxR+Y/A/QhJ1EWtWqPBBAxTAFaSkviwEuOEZNtW8pvkPgoCZQ+HxqW1A==}
 
+  '@vueuse/metadata@13.1.0':
+    resolution: {integrity: sha512-+TDd7/a78jale5YbHX9KHW3cEDav1lz1JptwDvep2zSG8XjCsVE+9mHIzjTOaPbHUAk5XiE4jXLz51/tS+aKQw==}
+
   '@vueuse/shared@12.8.2':
     resolution: {integrity: sha512-dznP38YzxZoNloI0qpEfpkms8knDtaoQ6Y/sfS0L7Yki4zh40LFHEhur0odJC6xTHG5dxWVPiUWBXn+wCG2s5w==}
+
+  '@vueuse/shared@13.1.0':
+    resolution: {integrity: sha512-IVS/qRRjhPTZ6C2/AM3jieqXACGwFZwWTdw5sNTSKk2m/ZpkuuN+ri+WCVUP8TqaKwJYt/KuMwmXspMAw8E6ew==}
+    peerDependencies:
+      vue: ^3.5.0
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1942,6 +1961,9 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue-sonner@1.3.2:
+    resolution: {integrity: sha512-UbZ48E9VIya3ToiRHAZUbodKute/z/M1iT8/3fU8zEbwBRE11AKuHikssv18LMk2gTTr6eMQT4qf6JoLHWuj/A==}
+
   vue-tsc@2.2.0:
     resolution: {integrity: sha512-gtmM1sUuJ8aSb0KoAFmK9yMxb8TxjewmxqTJ1aKphD5Cbu0rULFY6+UQT51zW7SpUcenfPUuflKyVwyx9Qdnxg==}
     hasBin: true
@@ -2813,13 +2835,26 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@vueuse/core@13.1.0(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 13.1.0
+      '@vueuse/shared': 13.1.0(vue@3.5.13(typescript@5.7.3))
+      vue: 3.5.13(typescript@5.7.3)
+
   '@vueuse/metadata@12.8.2': {}
+
+  '@vueuse/metadata@13.1.0': {}
 
   '@vueuse/shared@12.8.2(typescript@5.7.3)':
     dependencies:
       vue: 3.5.13(typescript@5.7.3)
     transitivePeerDependencies:
       - typescript
+
+  '@vueuse/shared@13.1.0(vue@3.5.13(typescript@5.7.3))':
+    dependencies:
+      vue: 3.5.13(typescript@5.7.3)
 
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
@@ -3767,6 +3802,8 @@ snapshots:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@5.7.3)
+
+  vue-sonner@1.3.2: {}
 
   vue-tsc@2.2.0(typescript@5.7.3):
     dependencies:
