@@ -1,24 +1,18 @@
 <script>
-	import { scale } from 'svelte/transition';
+	import CommandLine from '$lib/components/CommandLine.svelte';
 
 	let copied = false;
+	let copyTooltip = 'Copy command';
 
 	$: {
 		if (copied) {
+			copyTooltip = 'Copied!';
 			setTimeout(() => {
 				copied = false;
+				copyTooltip = 'Copy command';
 			}, 2000);
 		}
 	}
-
-	const copyCommand = async () => {
-		try {
-			await navigator.clipboard.writeText('npx create-makro@latest');
-			copied = true;
-		} catch (err) {
-			console.error('Failed to copy: ', err);
-		}
-	};
 </script>
 
 <svelte:head>
@@ -30,76 +24,64 @@
 	/>
 </svelte:head>
 
-<section
-	class="container mx-auto flex flex-col items-center py-10 sm:py-16 md:py-36 space-y-9 sm:space-y-14"
->
-	<img src="/logo.svg" alt="Frontend Makro" class="w-16 h-16" />
+<section class="container mx-auto flex flex-col items-center py-10 space-y-8">
+	<img src="/logo.svg" alt="Frontend Makro logo" class="w-20 h-20 drop-shadow-lg" />
 	<div>
-		<h1 class="text-3xl sm:text-6xl font-semibold text-center tracking-wide">Frontend Makro</h1>
-		<p class="text-base sm:text-xl text-center py uppercase font-light mt-2">
-			All in one pre setup frontend templates
+		<h1 class="text-4xl sm:text-6xl font-bold text-center tracking-tight text-light drop-shadow-md">
+			Frontend Makro
+		</h1>
+		<p class="text-base sm:text-xl text-center uppercase font-light mt-3 text-mute tracking-wider">
+			All in one pre-setup frontend templates
 		</p>
 	</div>
 
 	<p
-		class="w-11/12 sm:w-10/12 md:w-9/12 lg:w-1/2 text-lg sm:text-xl text-center text-pretty font-light"
+		class="w-11/12 sm:w-10/12 md:w-8/12 lg:w-1/2 text-lg sm:text-xl text-center text-pretty font-light text-light/80"
 	>
-		With a single command, you can generate a fully-configured Frontend project with all the
+		With a single command, you can generate a fully-configured frontend project with all the
 		essential libraries you need — saving you time and effort in setting up your development
-		environment and you can extend as you want later.
+		environment. Extend as you want, whenever you want.
 	</p>
 
-	<div class="space-y-2 flex flex-col justify-center items-center">
-		<h2 class="text-xl sm:text-2xl text-center tracking-wide">One command is all you need</h2>
-		<code
-			class="w-[300px] border-[1px] border-light/10 bg-dark py-6 px-4 rounded-lg flex justify-between items-center gap-5"
-		>
-			<pre><span class="text-error">npx</span>&nbsp;<span class="text-primary">create-makro@latest</span
+	<div class="">
+		<h2 class="text-xl sm:text-2xl text-center tracking-wide font-medium text-light/90">
+			One command is all you need
+		</h2>
+		<CommandLine command={'npx create-makro@latest'}>
+			<pre class="select-all font-mono"><span class="text-error">npx</span>&nbsp;<span
+					class="text-primary">create-makro@latest</span
 				></pre>
-			<div class="w-4 h-4 relative">
-				{#if !copied}
-					<button
-						class="absolute top-0 left-0 right-0 bottom-0"
-						in:scale={{ duration: 600 }}
-						out:scale={{ duration: 600 }}
-						on:click={copyCommand}
-					>
-						<img src="/copy.svg" alt="copy" class="w-4 h-4" />
-					</button>
-				{:else}
-					<button
-						class="absolute top-0 left-0 right-0 bottom-0"
-						in:scale={{ duration: 600 }}
-						out:scale={{ duration: 600 }}
-						on:click={copyCommand}
-					>
-						<img src="/check.svg" alt="copy" class="w-4 h-4" />
-					</button>
-				{/if}
-			</div>
-		</code>
+		</CommandLine>
+		<span class="text-xs text-mute mt-1">Click to copy the install command</span>
 	</div>
 
-	<div class="w-[300px]">
-		<!-- <a
+	<div class="w-full max-w-[340px] flex flex-col gap-3 mt-6">
+		<a
 			href="/docs"
-			class="col-span-2 sm:col-span-1 border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-[400ms] hover:scale-105"
-			aria-label="Go to Documentations"
+			class="border border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-300 hover:scale-105 hover:bg-light/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+			aria-label="Go to Documentation"
 		>
-			Documentations
+			<span class="font-medium">Documentation</span>
 			<img src="/arrow.svg" alt="arrow" class="w-5 h-5" />
-		</a> -->
+		</a>
 		<a
 			href="https://github.com/wyMinLwin/frontend-makro"
 			target="_blank"
-			class="border-[1px] border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center text-primary transition-all duration-[400ms] hover:scale-105"
+			class="border border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center text-primary transition-all duration-300 hover:scale-105 hover:bg-light/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
 			aria-label="Star on GitHub"
 		>
-			Star the repository on GitHub
+			<span class="font-medium">Star the repository on GitHub</span>
 			<img src="/star-fill.svg" alt="star" class="w-5 h-5" />
 		</a>
 	</div>
 </section>
 
 <style>
+	/*
+  Additional UX improvements:
+  - Subtle background and shadow for main section
+  - Responsive max-widths for code and buttons
+  - Focus-visible and hover states for accessibility
+  - Font and color variables are set in app.css
+*/
 </style>

@@ -9,7 +9,7 @@
 <section class="h-full w-full overflow-hidden flex flex-col">
 	<Navbar />
 	<div
-		class="grow overflow-y-auto container mx-auto md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"
+		class="grow overflow-y-auto w-full mx-4 md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10"
 	>
 		<Sidebar />
 		<div class="w-full h-full overflow-y-auto pt-4">
