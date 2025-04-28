@@ -10,10 +10,9 @@ export const getTodos = {
 				return request.data;
 			},
 			initialPageParam: 0,
-			getNextPageParam: (lastPage) => lastPage.todos.length < 50 ? undefined : lastPage.skip + 50,
+			getNextPageParam: (lastPage) => (lastPage.todos.length < 50 ? undefined : lastPage.skip + 50),
 			select: (data) => data.pages.flatMap((page) => page.todos),
 			...opt
 		});
 	}
 };
-

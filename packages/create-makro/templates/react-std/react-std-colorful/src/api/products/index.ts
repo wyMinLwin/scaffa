@@ -1,4 +1,4 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import axios from 'axios';
 
 export const getProducts = {
@@ -13,3 +13,15 @@ export const getProducts = {
 		});
 	}
 };
+
+export const addProduct = {
+    useMutation: (opt?: Partial<UseMutationOptions<ProductType, Error, CreateProductType>>) => {
+        return useMutation<ProductType, Error, CreateProductType>({
+            mutationFn: async (product) => {
+                const request = await axios.post(`products/add`, product);
+                return request.data;
+            },
+            ...opt
+        })
+    }
+}
