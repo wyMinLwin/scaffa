@@ -19,7 +19,7 @@ const input = ref('')
 
 const { mutate, isPending } = api.products.addProduct.useMutation({
   onSuccess: (product) => {
-    queryClient.setQueryData(['products'], (oldData: any) => {
+    queryClient.setQueryData(['products'], (oldData: ProductType[]) => {
       return [...oldData, product]
     })
     input.value = ''
@@ -77,7 +77,7 @@ const addProduct = () => {
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div v-for="(product, index) in data" :key="product.id">
-        <p>{{ (index+1) + '.' + product.title }}</p>
+        <p>{{ index + 1 + '.' + product.title }}</p>
       </div>
     </div>
   </section>
