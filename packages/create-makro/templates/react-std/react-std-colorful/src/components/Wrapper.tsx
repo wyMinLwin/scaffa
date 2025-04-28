@@ -1,19 +1,20 @@
-import DefaultLayout from "@/layouts/DefaultLayout";
-import HomeView from "@/modules/home/HomeView";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DefaultLayout from '@/layouts/DefaultLayout';
+import HomeView from '@/modules/home/HomeView';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from '@/components/ui/sonner';
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: '/',
 		element: <DefaultLayout />,
 		children: [
 			{
-				path: "",
-				element: <HomeView />,
-			},
-		],
-	},
+				path: '',
+				element: <HomeView />
+			}
+		]
+	}
 ]);
 
 const Wrapper = () => {
@@ -22,6 +23,7 @@ const Wrapper = () => {
 		<>
 			<QueryClientProvider client={queryClient}>
 				<RouterProvider router={router}></RouterProvider>
+				<Toaster />
 			</QueryClientProvider>
 		</>
 	);
