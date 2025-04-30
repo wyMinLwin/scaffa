@@ -1,9 +1,13 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
 
-	let routes = $page.route.id?.split('/').slice(1) || [];
+	let { children }: Props = $props();
+	let routes = page.route.id?.split('/').slice(1) || [];
 </script>
 
 <section class="h-full w-full overflow-hidden flex flex-col">
@@ -23,8 +27,7 @@
 					{/if}
 				{/each}
 			</div>
-			<slot />
+			{@render children?.()}
 		</div>
 	</div>
 </section>
-<!--  -->
