@@ -1,18 +1,5 @@
 <script>
 	import CommandLine from '$lib/components/CommandLine.svelte';
-
-	let copied = false;
-	let copyTooltip = 'Copy command';
-
-	$: {
-		if (copied) {
-			copyTooltip = 'Copied!';
-			setTimeout(() => {
-				copied = false;
-				copyTooltip = 'Copy command';
-			}, 2000);
-		}
-	}
 </script>
 
 <svelte:head>

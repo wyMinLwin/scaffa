@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
+	interface Props {
+		children?: import('svelte').Snippet;
+		[key: string]: any;
+	}
 
-	let copied = false;
-	let copyTooltip = 'Copy command';
+	let { ...props }: Props = $props();
 
-	let { command } = $$props
+	let copied = $state(false);
+	let copyTooltip = $state('Copy command');
 
-	$: {
+	let { command } = props;
+
+	$effect(() => {
 		if (copied) {
 			copyTooltip = 'Copied!';
 			setTimeout(() => {
@@ -14,7 +20,7 @@
 				copyTooltip = 'Copy command';
 			}, 2000);
 		}
-	}
+	});
 
 	// Copies the install command to clipboard and provides feedback
 	const copyCommand = async () => {
@@ -30,14 +36,14 @@
 <code
 	class="w-full border border-light/10 bg-dark/80 p-4 rounded-lg flex justify-between items-center gap-5 shadow-md relative group"
 >
-	<slot></slot>
+	{@render props.children?.()}
 	<div class="w-4 h-4 relative flex items-center justify-center">
 		{#if !copied}
 			<button
 				class="absolute inset-0 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded transition"
 				in:scale={{ duration: 400 }}
 				out:scale={{ duration: 400 }}
-				on:click={copyCommand}
+				onclick={copyCommand}
 				aria-label={copyTooltip}
 				title={copyTooltip}
 			>
@@ -52,7 +58,7 @@
 				class="absolute inset-0 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded animate-pulse"
 				in:scale={{ duration: 400 }}
 				out:scale={{ duration: 400 }}
-				on:click={copyCommand}
+				onclick={copyCommand}
 				aria-label={copyTooltip}
 				title={copyTooltip}
 			>
