@@ -64,11 +64,4 @@
 </section>
 
 <style>
-	/*
-  Additional UX improvements:
-  - Subtle background and shadow for main section
-  - Responsive max-widths for code and buttons
-  - Focus-visible and hover states for accessibility
-  - Font and color variables are set in app.css
-*/
 </style>
