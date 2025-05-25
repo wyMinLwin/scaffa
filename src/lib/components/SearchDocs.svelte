@@ -46,7 +46,7 @@
 		>
 			<div
 				aria-label="Search Dialog Content"
-				class={`bg-dark border border-light/20 w-11/12 max-w-xl p-2 rounded-2xl absolute top-1/4 -translate-x-1/2 left-1/2 max-h-[450px] flex flex-col ${searchQuery && 'h-full'}`}
+				class={`bg-dark border border-light/20 w-11/12 max-w-lg p-2 rounded-lg absolute top-1/4 -translate-x-1/2 left-1/2 max-h-[450px] flex flex-col ${searchQuery && 'h-full'}`}
 			>
 				<div class="w-full relative grow-0">
 					<img

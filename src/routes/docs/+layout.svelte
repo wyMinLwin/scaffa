@@ -7,16 +7,25 @@
 	}
 
 	let { children }: Props = $props();
-	let routes = page.route.id?.split('/').slice(1) || [];
+	let routes = $state(page.route.id?.split('/').slice(1) || []);
+
+	$effect(() => {
+		routes = page.route.id?.split('/').slice(1) || [];
+	});
 </script>
+
+<svelte:head>
+	<title>Introduction | Frontend Makro</title>
+	<meta name="description" content="Introduction for Frontend Makro" />
+</svelte:head>
 
 <section class="h-full w-full overflow-hidden flex flex-col">
 	<Navbar />
 	<div
-		class="grow overflow-y-auto w-full mx-4 md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10"
+		class="grow selection:bg-primary/30 overflow-y-auto w-full md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10"
 	>
 		<Sidebar />
-		<div class="w-full h-full overflow-y-auto pt-4">
+		<div class="w-full h-full overflow-y-auto p-4 md:p-0 md:pt-4 md:pr-4">
 			<div class="flex justify-start items-center space-x-1.5 mb-4">
 				{#each routes as route, i (i)}
 					<span class="capitalize {i === routes.length - 1 ? 'text-light' : 'text-mute'}"
@@ -27,6 +36,7 @@
 					{/if}
 				{/each}
 			</div>
+
 			{@render children?.()}
 		</div>
 	</div>

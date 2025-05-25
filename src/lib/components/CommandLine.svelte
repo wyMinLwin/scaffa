@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { cn } from '$lib/utils';
 	import { scale } from 'svelte/transition';
 	interface Props {
 		children?: import('svelte').Snippet;
-		[key: string]: any;
+		class?: string;
+		command: string;
 	}
 
 	let { ...props }: Props = $props();
@@ -34,7 +36,10 @@
 </script>
 
 <code
-	class="w-full border border-light/10 bg-dark/80 p-4 rounded-lg flex justify-between items-center gap-5 shadow-md relative group"
+	class={cn([
+		'w-full border border-light/10 bg-dark/80 p-4 rounded-lg flex justify-between items-center gap-5 shadow-md relative group ',
+		props.class
+	])}
 >
 	{@render props.children?.()}
 	<div class="w-4 h-4 relative flex items-center justify-center">

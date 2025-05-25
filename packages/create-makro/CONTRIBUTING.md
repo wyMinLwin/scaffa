@@ -9,6 +9,7 @@
 1. Non-Option Template (can have only 1 variant)
 2. Option Template (can have more than 1 variant)
 
+
 ### Non-Option Templates
 
 Example structure for Non-Option Templates
