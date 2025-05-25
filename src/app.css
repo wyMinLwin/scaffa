@@ -10,6 +10,7 @@ layer(base);
   --color-light: #f7f1ff;
   --color-dark: #211f22;
   --color-error: #fc608c;
+  --color-cool: #fd5e08;
 
   --font-display: 'Rubik', sans-serif;
 }

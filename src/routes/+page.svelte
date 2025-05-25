@@ -1,5 +1,6 @@
 <script>
 	import CommandLine from '$lib/components/CommandLine.svelte';
+	import NavButton from '$lib/components/NavButton.svelte';
 </script>
 
 <svelte:head>
@@ -35,7 +36,7 @@
 			One command is all you need
 		</h2>
 		<CommandLine command={'npx create-makro@latest'}>
-			<pre class="select-all font-mono"><span class="text-error">npx</span>&nbsp;<span
+			<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
 					class="text-primary">create-makro@latest</span
 				></pre>
 		</CommandLine>
