@@ -32,14 +32,14 @@ const getArgValue = (flags) => {
 // CLI validation
 const validateCLI = () => {
 	if (process.argv.length >= 4) {
-		const templateFromArgv = getArgValue(['--template', '-t']);
+		const templateFromArgv = getArgValue(['-template', '-t']);
 		if (templateFromArgv && templates.some((template) => template.value === templateFromArgv)) {
 			aliasSchema.template = templateFromArgv;
 		} else if (templateFromArgv) {
 			console.warn(chalk.hex('#ea7000')('Invalid template.'));
 		}
 
-		const packageManagerFromArgv = getArgValue(['--package', '-p']);
+		const packageManagerFromArgv = getArgValue(['-package', '-p']);
 		if (
 			packageManagerFromArgv &&
 			availablePackageManagers.some((p) => p.value === packageManagerFromArgv)

@@ -3,6 +3,11 @@
 	import NavButton from '$lib/components/NavButton.svelte';
 </script>
 
+<svelte:head>
+	<title>Introduction | Frontend Makro</title>
+	<meta name="description" content="Introduction for Frontend Makro" />
+</svelte:head>
+
 <section class="w-full space-y-8 tracking-wider font-light">
 	<h1 class="text-3xl font-semibold pt-3 pb-8 mb-10 border-b border-light/30">Introduction</h1>
 	<div class="space-y-4">
