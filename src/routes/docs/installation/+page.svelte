@@ -55,7 +55,6 @@
 
         <div class="w-full flex justify-between items-center mt-16">
             <NavButton class="w-1/3" type="previous" path="/docs" label="Introduction" />
-            <NavButton class="w-1/3" type="next" path="/docs/templates" label="Templates" />
         </div>
     </div>
 </section>
