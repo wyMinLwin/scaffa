@@ -33,15 +33,16 @@
 			applications, neither a component library nor a framework.
 		</p>
 
-		<p>
-			You can get a ready to go template by simply running the following command in your terminal:
-
+		<div>
+			<p>
+				You can get a ready to go template by simply running the following command in your terminal:
+			</p>
 			<CommandLine command={'npx create-makro@latest'} class="w-fit mt-1.5">
 				<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
 						class="text-primary">create-makro@latest</span
 					></pre>
 			</CommandLine>
-		</p>
+		</div>
 	</div>
 
 	<div class="w-full flex justify-between items-center mt-16">
