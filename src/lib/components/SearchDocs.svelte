@@ -42,11 +42,11 @@
 		<button
 			aria-label="Search Dialog Overlay"
 			onclick={toggleDialog}
-			class="absolute inset-0 bg-black/40 focus-within:outline-0 focus-within:ring-0"
+			class="absolute inset-0 bg-black/40 focus-within:outline-0 focus-within:ring-0 z-50"
 		>
 			<div
 				aria-label="Search Dialog Content"
-				class={`bg-dark border border-light/20 w-11/12 max-w-lg p-2 rounded-lg absolute top-1/4 -translate-x-1/2 left-1/2 max-h-[450px] flex flex-col ${searchQuery && 'h-full'}`}
+				class={` bg-dark border border-light/20 w-11/12 max-w-lg p-2 rounded-lg absolute top-1/4 -translate-x-1/2 left-1/2 max-h-[450px] flex flex-col ${searchQuery && 'h-full'}`}
 			>
 				<div class="w-full relative grow-0">
 					<img
