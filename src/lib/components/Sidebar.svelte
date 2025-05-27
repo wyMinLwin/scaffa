@@ -1,8 +1,5 @@
-<script lang="ts">
-	import { page } from '$app/state';
-	import { cn } from '$lib/utils';
-
-	const data = [
+<script module>
+	export const docs = [
 		{
 			group: 'Getting Started',
 			items: [
@@ -17,6 +14,11 @@
 			]
 		}
 	];
+</script>
+
+<script lang="ts">
+	import { page } from '$app/state';
+	import { cn } from '$lib/utils';
 
 	let currentPath = $state(page.route.id);
 	$effect(() => {
@@ -25,7 +27,7 @@
 </script>
 
 <aside class="w-full h-full hidden md:block overflow-y-auto pt-4 border-r-[1px] border-light/10">
-	{#each data as group (group.group)}
+	{#each docs as group (group.group)}
 		<div class="px-4 mb-5 pb-5 last:border-none space-y-2 border-b-[1px] border-light/10">
 			<h2 class="text-sm text-light font-base tracking-wider">
 				{group.group}
