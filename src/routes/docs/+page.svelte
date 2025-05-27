@@ -30,7 +30,7 @@
 		</p>
 		<p>
 			<strong>Frontend Makro</strong> is a template library which have conventions for building frontend
-			applications, not a framework.
+			applications, neither a component library nor a framework.
 		</p>
 
 		<p>
