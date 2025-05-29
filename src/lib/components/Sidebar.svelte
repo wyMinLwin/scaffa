@@ -12,6 +12,15 @@
 					path: '/docs/installation'
 				}
 			]
+		},
+		{
+			group: 'Guide',
+			items: [
+				{
+					title: 'Templates',
+					path: '/docs/templates'
+				},
+			]
 		}
 	];
 </script>
