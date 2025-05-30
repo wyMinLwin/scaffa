@@ -37,12 +37,15 @@
 
 <code
 	class={cn([
-		'w-full border border-light/10 bg-dark/80 p-4 rounded-lg flex justify-between items-center gap-5 shadow-md relative group ',
+		'w-full max-w-full min-w-0 border border-light/10 bg-dark/80 p-3.5 md:p-4 rounded-md sm:rounded-lg flex justify-between items-center gap-3.5 md:gap-5 shadow-md relative group',
+		'overflow-x-auto whitespace-pre-line', // Add these classes
 		props.class
 	])}
 >
-	{@render props.children?.()}
-	<div class="w-4 h-4 relative flex items-center justify-center">
+	<p class="text-sm sm:text-base grow min-w-0 cli-wrapper">
+		{@render props.children?.()}
+	</p>
+	<div class="w-4 h-4 relative flex items-center justify-center grow-0 shrink-0">
 		{#if !copied}
 			<button
 				class="absolute inset-0 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded transition"
