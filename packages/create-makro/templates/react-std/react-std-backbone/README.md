@@ -52,6 +52,8 @@ react-std-backbone/
 │   ├── modules/
 │   │   └── home/
 │   │       └── HomeView.tsx
+│   ├── router/
+│   │   └── Router.ts
 │   ├── shared/
 │   └── vite-env.d.ts
 ├── tsconfig.app.json
