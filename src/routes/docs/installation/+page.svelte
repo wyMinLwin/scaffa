@@ -4,8 +4,8 @@
 </script>
 
 <svelte:head>
-	<title>Installation | Frontend Makro</title>
-	<meta name="description" content="Installation guide for Frontend Makro" />
+	<title>Installation | Scaffa</title>
+	<meta name="description" content="Installation guide for Scaffa" />
 </svelte:head>
 
 <section class="w-full space-y-8 tracking-wider font-light">
@@ -14,7 +14,7 @@
 	<div class="space-y-6">
 		<div class="space-y-4">
 			<h2 class="text-xl font-medium">Basic Installation</h2>
-			<p>Install <strong>Frontend Makro</strong> using the following command:</p>
+			<p>Install <strong>Scaffa</strong> using the following command:</p>
 			<CommandLine command={'npx create-makro@latest'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
 						>create-makro@latest</span

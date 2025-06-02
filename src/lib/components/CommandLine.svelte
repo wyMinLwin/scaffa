@@ -42,9 +42,9 @@
 		props.class
 	])}
 >
-	<p class="text-sm sm:text-base grow min-w-0 cli-wrapper">
+	<div class="text-sm sm:text-base grow min-w-0 cli-wrapper">
 		{@render props.children?.()}
-	</p>
+	</div>
 	<div class="w-4 h-4 relative flex items-center justify-center grow-0 shrink-0">
 		{#if !copied}
 			<button

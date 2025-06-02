@@ -4,19 +4,19 @@
 </script>
 
 <svelte:head>
-	<title>Frontend Makro</title>
-	<meta name="description" content="Frontend Makro, All in one pre setup frontend templates" />
+	<title>Scaffa</title>
+	<meta name="description" content="Scaffa, All in one pre setup frontend templates" />
 	<meta
 		name="keywords"
-		content="Frontend, Makro, Frontend Makro, UI Templates , Templates, TailwindCSS, Svelte, Vite, React"
+		content="Frontend, Makro, Scaffa, UI Templates , Templates, TailwindCSS, Svelte, Vite, React"
 	/>
 </svelte:head>
 
 <section class="container mx-auto flex flex-col items-center py-10 space-y-8">
-	<img src="/logo.svg" alt="Frontend Makro logo" class="w-20 h-20 drop-shadow-lg" />
+	<img src="/logo.svg" alt="Scaffa logo" class="w-20 h-20 drop-shadow-lg" />
 	<div>
 		<h1 class="text-4xl sm:text-6xl font-bold text-center tracking-tight text-light drop-shadow-md">
-			Frontend Makro
+			Scaffa
 		</h1>
 		<p class="text-base sm:text-xl text-center uppercase font-light mt-3 text-mute tracking-wider">
 			All in one pre-setup frontend templates
@@ -53,7 +53,7 @@
 			<img src="/arrow.svg" alt="arrow" class="w-5 h-5" />
 		</a>
 		<a
-			href="https://github.com/wyMinLwin/frontend-makro"
+			href="https://github.com/wyMinLwin/Scaffa"
 			target="_blank"
 			class="border border-light/10 gap-3 p-4 rounded-lg flex justify-between items-center text-primary transition-all duration-300 hover:scale-105 hover:bg-light/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
 			aria-label="Star on GitHub"

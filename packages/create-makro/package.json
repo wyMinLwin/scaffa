@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wyMinLwin/frontend-makro.git"
+    "url": "https://github.com/wyMinLwin/Scaffa.git"
   },
   "bugs": {
-    "url": "https://github.com/wyMinLwin/frontend-makro/issues"
+    "url": "https://github.com/wyMinLwin/Scaffa/issues"
   },
-  "homepage": "https://github.com/wyMinLwin/frontend-makro#readme",
+  "homepage": "https://github.com/wyMinLwin/Scaffa#readme",
   "scripts": {
     "dev": "node ."
   },
