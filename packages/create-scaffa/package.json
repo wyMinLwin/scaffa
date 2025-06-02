@@ -1,26 +1,28 @@
 {
-  "name": "create-makro",
-  "version": "2.3.2",
+  "name": "create-scaffa",
+  "version": "2.3.4",
   "description": "All in one pre setup frontend templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
   "type": "module",
   "private": false,
   "bin": {
-    "create-makro": "bin/index.js"
+    "create-scaffa": "bin/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wyMinLwin/Scaffa.git"
+    "url": "git+https://github.com/wyMinLwin/scaffa.git"
   },
   "bugs": {
-    "url": "https://github.com/wyMinLwin/Scaffa/issues"
+    "url": "https://github.com/wyMinLwin/scaffa/issues"
   },
-  "homepage": "https://github.com/wyMinLwin/Scaffa#readme",
+  "homepage": "https://github.com/wyMinLwin/scaffa#readme",
   "scripts": {
     "dev": "node ."
   },
   "keywords": [
+    "scaffa",
+    "create-scaffa",
     "frontend",
     "templates",
     "react",

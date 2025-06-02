@@ -8,7 +8,7 @@
 	<meta name="description" content="Scaffa, All in one pre setup frontend templates" />
 	<meta
 		name="keywords"
-		content="Frontend, Makro, Scaffa, UI Templates , Templates, TailwindCSS, Svelte, Vite, React"
+		content="Frontend, scaffa, Scaffa, UI Templates , Templates, TailwindCSS, Svelte, Vite, React"
 	/>
 </svelte:head>
 
@@ -35,9 +35,9 @@
 		<h2 class="text-xl sm:text-2xl text-center tracking-wide font-medium text-light/90">
 			One command is all you need
 		</h2>
-		<CommandLine command={'npx create-makro@latest'}>
+		<CommandLine command={'npx create-scaffa@latest'}>
 			<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
-					class="text-primary">create-makro@latest</span
+					class="text-primary">create-scaffa@latest</span
 				></pre>
 		</CommandLine>
 		<span class="text-xs text-mute mt-1">Click to copy the install command</span>

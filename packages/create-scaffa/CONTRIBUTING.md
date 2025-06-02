@@ -2,13 +2,13 @@
 
 ## Todo
 
-1. Create new project as you want in **packages/create-makro/templates**.
-2. Add new template object as show in below in **packages/create-makro/templates.js**.
+1. Create new project as you want in **packages/create-scaffa/templates**.
+2. Add new template object as show in below in **packages/create-scaffa/templates.js**.
 
 **To add a template you have two options**
+
 1. Non-Option Template (can have only 1 variant)
 2. Option Template (can have more than 1 variant)
-
 
 ### Non-Option Templates
 
@@ -17,7 +17,7 @@ Example structure for Non-Option Templates
 ```bash
 ...
 packages/
-├── create-makro/
+├── create-scaffa/
 │   ├── bin/
 │   │   └── index.js
 │   └── templates/
@@ -44,7 +44,7 @@ Example structure for Option Templates
 ```bash
 ...
 packages/
-├── create-makro/
+├── create-scaffa/
 │   ├── bin/
 │   │   └── index.js
 │   └── templates/

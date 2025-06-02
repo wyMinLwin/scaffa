@@ -1,5 +1,5 @@
 export default {
 	template: 'react-std-backbone',
 	library: 'react',
-	supportMakro: true
+	supportscaffa: true
 };

@@ -1,17 +1,17 @@
 {
-  "name": "support-makro",
+  "name": "support-scaffa",
   "version": "0.0.2",
-  "description": "Support tools for creating and managing makro templates",
+  "description": "Support tools for creating and managing scaffa templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
   "type": "module",
   "private": false,
   "bin": {
-    "support-makro": "bin/index.js"
+    "support-scaffa": "bin/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wyMinLwin/Scaffa.git"
+    "url": "https://github.com/wyMinLwin/scaffa.git"
   },
   
   "scripts": {
@@ -20,8 +20,8 @@
   },
   "keywords": [
     "Scaffa",
-    "create-makro",
-    "support-makro",
+    "create-scaffa",
+    "support-scaffa",
     "react",
     "vue",
     "templates"

@@ -9,26 +9,26 @@
 To create a project run the command:
 
 ```sh
-npx create-makro@latest
+npx create-scaffa@latest
 ```
 
-Then follow the interactive prompts. For more details on its implementation, check [CLI Implementation](packages/create-makro/README.md).
+Then follow the interactive prompts. For more details on its implementation, check [CLI Implementation](packages/create-scaffa/README.md).
 
 ## Scaffold
 
 You can even create a project easily with scaffold feature.
 
 ```sh
-npx create-makro@latest <ur-project-name> -t <template> -p <package-manager>
+npx create-scaffa@latest <ur-project-name> -t <template> -p <package-manager>
 ```
 
 **Example**
 
 ```sh
-npx create-makro@latest makro-starter -t vue-std -p pnpm
+npx create-scaffa@latest scaffa-starter -t vue-std -p pnpm
 ```
 
-This single line of command will create a Vue template with the name makro-starter and handle dependencies with pnpm. You can see the availables table in **[Templates](#templates)**.
+This single line of command will create a Vue template with the name scaffa-starter and handle dependencies with pnpm. You can see the availables table in **[Templates](#templates)**.
 
 **Note that if we have option to select templates it will ask you one more question to choose option!**
 
@@ -51,7 +51,7 @@ Below is an abbreviated folder structure:
 <pre>
  ...
  packages/
- ├── create-makro/
+ ├── create-scaffa/
  │   ├── bin/
  │   │   └── index.js
  │   └── templates/
