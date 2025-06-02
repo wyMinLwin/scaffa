@@ -8,7 +8,7 @@ This directory contains the core packages for the Scaffa project. Each package s
 
 ### CLI
 
-**Path:** `packages/create-makro`
+**Path:** `packages/create-scaffa`
 
 The CLI package provides a command-line interface for creating and managing frontend projects using the predefined templates.
 
@@ -21,7 +21,7 @@ The CLI package provides a command-line interface for creating and managing fron
 **Usage:**
 
 ```sh
-npx create-makro@latest
+npx create-scaffa@latest
 ```
 
 ### Scaffold
@@ -29,13 +29,13 @@ npx create-makro@latest
 You can even create a project easily with scaffold feature.
 
 ```sh
-npx create-makro@latest <ur-project-name> -t <template> -p <package-manager>
+npx create-scaffa@latest <ur-project-name> -t <template> -p <package-manager>
 ```
 
 **Example**
 
 ```sh
-npx create-makro@latest makro-starter -t vue-std -p pnpm
+npx create-scaffa@latest scaffa-starter -t vue-std -p pnpm
 ```
 
 **Check available templates [here](#templates).**

@@ -60,7 +60,7 @@ const validateCLI = () => {
 	}
 };
 
-const initialText = 'create-makro executed!';
+const initialText = 'create-scaffa executed!';
 
 console.log(chalk.bold(gradientText(initialText)));
 console.log(chalk(gradientText('-'.repeat(initialText.length))));
@@ -207,8 +207,8 @@ const copyLocalRepo = async (projectName) => {
 const copyTemporarilySelectedTemplate = async (template, projectRootPath, templateType) => {
 	// Path to the template files
 	const templatePath = templateType
-		? path.join(process.cwd(), 'packages/create-makro/templates', template, templateType)
-		: path.join(process.cwd(), 'packages/create-makro/templates', template);
+		? path.join(process.cwd(), 'packages/create-scaffa/templates', template, templateType)
+		: path.join(process.cwd(), 'packages/create-scaffa/templates', template);
 	initializingSpinner.start();
 	// Copy template files to a temporary location
 	const tempDir = path.join(projectRootPath, 'temp');

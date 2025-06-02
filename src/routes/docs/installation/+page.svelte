@@ -15,9 +15,9 @@
 		<div class="space-y-4">
 			<h2 class="text-xl font-medium">Basic Installation</h2>
 			<p>Install <strong>Scaffa</strong> using the following command:</p>
-			<CommandLine command={'npx create-makro@latest'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
-						>create-makro@latest</span
+						>create-scaffa@latest</span
 					></pre>
 			</CommandLine>
 			<p>and then follow the prompt instructions.</p>
@@ -26,9 +26,9 @@
 		<div class="space-y-4">
 			<h2 class="text-xl font-medium">Project Name</h2>
 			<p>You can specify a project name during installation:</p>
-			<CommandLine command={'npx create-makro@latest my-project'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest my-project'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
-						>create-makro@latest</span
+						>create-scaffa@latest</span
 					>&nbsp;<span class="text-error">my-project</span></pre>
 			</CommandLine>
 		</div>
@@ -39,9 +39,9 @@
 				Choose a template using the <code class="text-primary">-t</code> or
 				<code class="text-primary">-template</code> flag:
 			</p>
-			<CommandLine command={'npx create-makro@latest -t react-std'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest -t react-std'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
-						>create-makro@latest</span
+						>create-scaffa@latest</span
 					>&nbsp;<span class="text-cool">-t</span>&nbsp;<span class="text-primary">react-std</span
 					></pre>
 			</CommandLine>
@@ -57,9 +57,9 @@
 				Available options: <code class="text-primary">npm</code> or
 				<code class="text-primary">pnpm</code>
 			</p>
-			<CommandLine command={'npx create-makro@latest -p pnpm'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest -p pnpm'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
-						>create-makro@latest</span
+						>create-scaffa@latest</span
 					>&nbsp;<span class="text-cool">-p</span>&nbsp;<span class="text-primary">pnpm</span></pre>
 			</CommandLine>
 		</div>
@@ -68,11 +68,11 @@
 			<h2 class="text-xl font-medium">Complete Example</h2>
 			<p>Combining all options:</p>
 			<CommandLine
-				command={'npx create-makro@latest my-project -t react-std -p pnpm'}
+				command={'npx create-scaffa@latest my-project -t react-std -p pnpm'}
 				class="w-fit mt-1.5"
 			>
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
-						>create-makro@latest</span
+						>create-scaffa@latest</span
 					>&nbsp;<span class="text-error">my-project</span>&nbsp;<span class="text-cool">-t</span
 					>&nbsp;<span class="text-primary">react-std</span>&nbsp;<span class="text-cool">-p</span
 					>&nbsp;<span class="text-primary">pnpm</span></pre>

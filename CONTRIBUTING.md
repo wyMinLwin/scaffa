@@ -10,7 +10,7 @@
 Change path to CLI directory
 
 ```sh
-cd packages/create-makro
+cd packages/create-scaffa
 ```
 
 Install dependencies for CLI
@@ -25,7 +25,7 @@ Run CLI locally
 pnpm dev
 ```
 
-See [Guide](packages/create-makro/CONTRIBUTING.md) to create your own templates.
+See [Guide](packages/create-scaffa/CONTRIBUTING.md) to create your own templates.
 
 ### Root Project
 

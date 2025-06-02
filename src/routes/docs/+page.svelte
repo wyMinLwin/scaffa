@@ -20,26 +20,25 @@
 			building your application without worrying about setup and configurations.
 		</p>
 		<p>
-			<strong>Scaffa</strong> is designed to be flexible and extensible, allowing you to customize
-			your project according to your needs.
+			<strong>Scaffa</strong> is designed to be flexible and extensible, allowing you to customize your
+			project according to your needs.
 		</p>
 		<p>
-			Whether you're building a small application or a large-scale project, <strong
-				>Scaffa</strong
-			> provides the tools and structure to help you get started quickly.
+			Whether you're building a small application or a large-scale project, <strong>Scaffa</strong> provides
+			the tools and structure to help you get started quickly.
 		</p>
 		<p>
-			<strong>Scaffa</strong> is a template library which have conventions for building frontend
-			applications, neither a component library nor a framework.
+			<strong>Scaffa</strong> is a template library which have conventions for building frontend applications,
+			neither a component library nor a framework.
 		</p>
 
 		<div>
 			<p>
 				You can get a ready to go template by simply running the following command in your terminal:
 			</p>
-			<CommandLine command={'npx create-makro@latest'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest'} class="w-fit mt-1.5">
 				<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
-						class="text-primary">create-makro@latest</span
+						class="text-primary">create-scaffa@latest</span
 					></pre>
 			</CommandLine>
 		</div>
