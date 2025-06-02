@@ -1,8 +1,8 @@
-# Frontend Makro Packages
+# Scaffa Packages
 
 ## Overview
 
-This directory contains the core packages for the Frontend Makro project. Each package serves a specific purpose in the overall project structure.
+This directory contains the core packages for the Scaffa project. Each package serves a specific purpose in the overall project structure.
 
 ## Packages
 
@@ -42,8 +42,8 @@ npx create-makro@latest makro-starter -t vue-std -p pnpm
 
 ### Templates
 
-| Template  | Tech Stack                                  |
-| --------- | ------------------------------------------- |
+| Template      | Tech Stack                                  |
+| ------------- | ------------------------------------------- |
 | **react-std** | TypeScript, ShadcnUI, Axios, TanStack Query |
 | **vue-std**   | TypeScript, ShadcnUI, Axios, TanStack Query |
 
@@ -51,7 +51,6 @@ Each template includes
 **routing**,
 **localization**,
 **data fetching** and all others necessary things with best practices.
-
 
 When you run the above command, you will be prompted to:
 

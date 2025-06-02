@@ -74,7 +74,7 @@ const basicQuestions = [
 		validate: (input) =>
 			/^(?![-_])[A-Za-z0-9-_]+(?<![-_])$/.test(input) ? true : 'Please enter a valid project name',
 		when: aliasSchema.name === null,
-		default: 'frontend-makro-starter'
+		default: 'Scaffa-starter'
 	},
 	{
 		type: 'list',
@@ -192,7 +192,7 @@ const cloneRepo = async (projectName) => {
 	if (process.env.npm_lifecycle_event === 'dev') {
 		await copyLocalRepo(projectName);
 	} else {
-		await simpleGit().clone('https://github.com/wyMinLwin/frontend-makro.git', projectName);
+		await simpleGit().clone('https://github.com/wyMinLwin/Scaffa.git', projectName);
 	}
 	cloneSpinner.stop();
 };

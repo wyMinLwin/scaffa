@@ -1,8 +1,8 @@
-# Frontend Makro Documentation
+# Scaffa Documentation
 
 ## Overview
 
-**Frontend Makro** is an all-in-one collection of pre-setup frontend templates and tools designed to help you quickly start modern frontend projects.
+**Scaffa** is an all-in-one collection of pre-setup frontend templates and tools designed to help you quickly start modern frontend projects.
 
 ## Usage
 
@@ -21,6 +21,7 @@ You can even create a project easily with scaffold feature.
 ```sh
 npx create-makro@latest <ur-project-name> -t <template> -p <package-manager>
 ```
+
 **Example**
 
 ```sh
@@ -33,8 +34,8 @@ This single line of command will create a Vue template with the name makro-start
 
 ## Templates
 
-| Template  | Tech Stack                                  |
-| --------- | ------------------------------------------- |
+| Template      | Tech Stack                                  |
+| ------------- | ------------------------------------------- |
 | **react-std** | TypeScript, ShadcnUI, Axios, TanStack Query |
 | **vue-std**   | TypeScript, ShadcnUI, Axios, TanStack Query |
 

@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Vue Template | Frontend Makro</title>
+	<title>Vue Template | Scaffa</title>
 	<meta name="description" content="Vue Standard Template architecture and details" />
 </svelte:head>
 

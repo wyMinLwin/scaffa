@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>React Template | Frontend Makro</title>
+	<title>React Template | Scaffa</title>
 	<meta name="description" content="React Standard Template architecture and details" />
 </svelte:head>
 

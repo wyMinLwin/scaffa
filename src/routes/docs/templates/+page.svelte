@@ -3,8 +3,8 @@
 </script>
 
 <svelte:head>
-	<title>Templates | Frontend Makro</title>
-	<meta name="description" content="Available templates and their features in Frontend Makro" />
+	<title>Templates | Scaffa</title>
+	<meta name="description" content="Available templates and their features in Scaffa" />
 </svelte:head>
 
 <section class="space-y-8 tracking-wider font-light">

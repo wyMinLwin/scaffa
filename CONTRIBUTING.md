@@ -1,4 +1,4 @@
-# Frontend-makro Contributing Guide
+# Scaffa Contributing Guide
 
 ## Setup
 
@@ -8,26 +8,35 @@
 ### CLI Package
 
 Change path to CLI directory
+
 ```sh
 cd packages/create-makro
 ```
+
 Install dependencies for CLI
+
 ```sh
 pnpm install
 ```
+
 Run CLI locally
+
 ```sh
 pnpm dev
 ```
+
 See [Guide](packages/create-makro/CONTRIBUTING.md) to create your own templates.
 
 ### Root Project
 
 Install dependencies
+
 ```sh
 pnpm install
 ```
+
 Run Web
+
 ```sh
 pnpm dev
 ```
