@@ -2,9 +2,14 @@
 layer(base);
 @import 'tailwindcss';
 
+@custom-variant light (&:where(.light, .light *));
+@plugin "@iconify/tailwind4";
+
 @theme {
 	--color-bg: #222222;
+	--color-bg-light: #f7f7f7;
 	--color-primary: #fce566;
+	--color-secondary: #2d307a;
 	--color-border: #282828;
 	--color-mute: #b2afab;
 	--color-light: #f7f1ff;

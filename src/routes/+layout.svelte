@@ -1,13 +1,25 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import '../app.css';
 	interface Props {
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 	}
 
 	let { children }: Props = $props();
 </script>
 
-<div class="app font-display bg-bg text-light w-screen h-svh overflow-hidden">
+<svelte:head>
+	<script>
+		document.documentElement.classList.toggle(
+			'light',
+			localStorage.getItem('scaffa:theme') === 'light'
+		);
+	</script>
+</svelte:head>
+
+<div
+	class="app selection:bg-primary/30 font-display w-screen h-svh overflow-hidden"
+>
 	<main class="h-full overflow-y-auto">
 		{@render children?.()}
 	</main>
