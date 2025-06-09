@@ -16,7 +16,7 @@
 			<h2 class="text-xl font-medium">Basic Installation</h2>
 			<p>Install <strong>Scaffa</strong> using the following command:</p>
 			<CommandLine command={'npx create-scaffa@latest'} class="w-fit mt-1.5">
-				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
+				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary light:text-secondary"
 						>create-scaffa@latest</span
 					></pre>
 			</CommandLine>
@@ -27,7 +27,7 @@
 			<h2 class="text-xl font-medium">Project Name</h2>
 			<p>You can specify a project name during installation:</p>
 			<CommandLine command={'npx create-scaffa@latest my-project'} class="w-fit mt-1.5">
-				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
+				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary light:text-secondary"
 						>create-scaffa@latest</span
 					>&nbsp;<span class="text-error">my-project</span></pre>
 			</CommandLine>
@@ -36,13 +36,13 @@
 		<div class="space-y-4">
 			<h2 class="text-xl font-medium">Template Selection</h2>
 			<p>
-				Choose a template using the <code class="text-primary">-t</code> or
-				<code class="text-primary">-template</code> flag:
+				Choose a template using the <code class="text-primary light:text-secondary">-t</code> or
+				<code class="text-primary light:text-secondary">-template</code> flag:
 			</p>
 			<CommandLine command={'npx create-scaffa@latest -t react-std'} class="w-fit mt-1.5">
-				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
+				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary light:text-secondary"
 						>create-scaffa@latest</span
-					>&nbsp;<span class="text-cool">-t</span>&nbsp;<span class="text-primary">react-std</span
+					>&nbsp;<span class="text-cool">-t</span>&nbsp;<span class="text-primary light:text-secondary">react-std</span
 					></pre>
 			</CommandLine>
 		</div>
@@ -50,17 +50,17 @@
 		<div class="space-y-4">
 			<h2 class="text-xl font-medium">Package Manager</h2>
 			<p>
-				Select a package manager using <code class="text-primary">-p</code> or
-				<code class="text-primary">-package</code> flag:
+				Select a package manager using <code class="text-primary light:text-secondary">-p</code> or
+				<code class="text-primary light:text-secondary">-package</code> flag:
 			</p>
 			<p class="text-sm">
-				Available options: <code class="text-primary">npm</code> or
-				<code class="text-primary">pnpm</code>
+				Available options: <code class="text-primary light:text-secondary">npm</code> or
+				<code class="text-primary light:text-secondary">pnpm</code>
 			</p>
 			<CommandLine command={'npx create-scaffa@latest -p pnpm'} class="w-fit mt-1.5">
-				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
+				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary light:text-secondary"
 						>create-scaffa@latest</span
-					>&nbsp;<span class="text-cool">-p</span>&nbsp;<span class="text-primary">pnpm</span></pre>
+					>&nbsp;<span class="text-cool">-p</span>&nbsp;<span class="text-primary light:text-secondary">pnpm</span></pre>
 			</CommandLine>
 		</div>
 
@@ -71,11 +71,11 @@
 				command={'npx create-scaffa@latest my-project -t react-std -p pnpm'}
 				class="w-fit mt-1.5"
 			>
-				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
+				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary light:text-secondary"
 						>create-scaffa@latest</span
 					>&nbsp;<span class="text-error">my-project</span>&nbsp;<span class="text-cool">-t</span
-					>&nbsp;<span class="text-primary">react-std</span>&nbsp;<span class="text-cool">-p</span
-					>&nbsp;<span class="text-primary">pnpm</span></pre>
+					>&nbsp;<span class="text-primary light:text-secondary">react-std</span>&nbsp;<span class="text-cool">-p</span
+					>&nbsp;<span class="text-primary light:text-secondary">pnpm</span></pre>
 			</CommandLine>
 		</div>
 

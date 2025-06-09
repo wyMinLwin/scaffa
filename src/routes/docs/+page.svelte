@@ -38,7 +38,7 @@
 			</p>
 			<CommandLine command={'npx create-scaffa@latest'} class="w-fit mt-1.5">
 				<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
-						class="text-primary">create-scaffa@latest</span
+						class="text-primary light:text-secondary">create-scaffa@latest</span
 					></pre>
 			</CommandLine>
 		</div>

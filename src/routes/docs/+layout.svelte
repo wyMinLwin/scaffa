@@ -17,13 +17,13 @@
 <section class="h-full w-full overflow-hidden flex flex-col">
 	<Navbar />
 	<div
-		class="grow selection:bg-primary/30 overflow-y-auto w-full md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10"
+		class="grow overflow-y-auto w-full md:grid md:grid-cols-[200px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10"
 	>
 		<Sidebar />
 		<div class="w-full h-full overflow-y-auto p-4 md:p-0 md:py-4 md:pr-4">
 			<div class="flex justify-start items-center space-x-1.5 mb-4">
 				{#each routes as route, i (i)}
-					<span class="capitalize {i === routes.length - 1 ? 'text-light' : 'text-mute'}"
+					<span class="capitalize {i === routes.length - 1 ? 'text-light light:text-dark' : 'text-mute'}"
 						>{route}</span
 					>
 					{#if i < routes.length - 1}

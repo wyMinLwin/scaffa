@@ -23,14 +23,14 @@
 		<ul class="list-disc pl-6 space-y-2">
 			<li>
 				<strong>Backbone:</strong>
-				<span class="pl-2 text-light"
+				<span class="pl-2 text-light light:text-dark"
 					>Minimal UI codebase with essential setup and clean examples. Ideal for starting from
 					scratch with best practices in place.</span
 				>
 			</li>
 			<li>
 				<strong>Colorful:</strong>
-				<span class="pl-2 text-light"
+				<span class="pl-2 text-light light:text-dark"
 					>Includes beautiful UI examples and pre-built components for a polished, ready-to-use
 					look.</span
 				>
