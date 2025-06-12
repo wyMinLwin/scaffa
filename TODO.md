@@ -7,5 +7,3 @@
 - Update **Documentation website** (For Full Details).
 
 - To Add **code of conduct**.
-
-- To remove unnecessary files(svgs).
