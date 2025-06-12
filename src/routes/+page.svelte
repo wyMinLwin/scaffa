@@ -1,7 +1,6 @@
 <script>
 	import CommandLine from '$lib/components/CommandLine.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import NavButton from '$lib/components/NavButton.svelte';
 </script>
 
 <svelte:head>
@@ -56,7 +55,6 @@
 			aria-label="Go to Documentation"
 		>
 			<span class="font-medium">Documentation</span>
-			<!-- <img src="/arrow.svg" alt="arrow" class="w-5 h-5" /> -->
 			<i class="icon-[material-symbols--arrow-outward-rounded] text-light light:text-dark text-xl"
 			></i>
 		</a>
@@ -68,7 +66,6 @@
 		>
 			<span class="font-medium">Star the repository on GitHub</span>
 			<i class="icon-[material-symbols--star-rounded] text-[#f2ba02] text-xl"></i>
-			<!-- <img src="/star-fill.svg" alt="star" class="w-5 h-5" /> -->
 		</a>
 	</div>
 </section>

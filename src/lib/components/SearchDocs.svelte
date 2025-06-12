@@ -70,7 +70,6 @@
 		<div
 			class="hidden sm:flex justify-center items-center px-2 rounded-md border-[1px] border-light/10 light:border-dark/10 shadow-[1px_1px_0px_0px_rgba(247,241,255,0.1)] light:shadow-[1px_1px_0px_0px_rgba(21,1,2,0.1)]"
 		>
-			<!-- <img src="/cmd.svg" alt="cmd icon" class="w-2.5 h-2.5 inline-block" /> -->
 			<i class="icon-[material-symbols--keyboard-command-key] text-sm text-light light:text-dark"
 			></i>
 			<span class="text-[0.89rem]">&nbsp;K</span>
@@ -93,11 +92,6 @@
 				])}
 			>
 				<div class="w-full relative grow-0">
-					<!-- <img
-						src="/search.svg"
-						alt="cmd icon"
-						class="absolute left-1.5 -translate-y-1/2 top-1/2 w-5 h-5 inline-block"
-					/> -->
 					<i
 						class="icon-[material-symbols--search-rounded] text-[#8c8891] absolute left-1.5 -translate-y-1/2 top-1/2 text-2xl"
 					></i>
@@ -130,20 +124,11 @@
 												class="w-full h-full flex justify-between items-center px-3"
 											>
 												<div class="flex items-center">
-													<!-- <img
-														src={index === selectedIndex ? '/doc-dark.svg' : '/doc-light.svg'}
-														alt="doc icon"
-														class="w-5 h-5 inline-block mr-1.5"
-													/> -->
 													<i class="icon-[fluent--document-48-regular] text-xl mr-1.5"></i>
 													<span class="text-lg font-light tracking-wider">{item.title}</span>
 												</div>
 												{#if index === selectedIndex}
-													<img
-														src="/enter-dark.svg"
-														alt="enter icon"
-														class="w-5 h-5 inline-block"
-													/>
+													<i class="icon-[proicons--arrow-enter] text-dark text-2xl"></i>
 												{/if}
 											</a>
 										</li>
