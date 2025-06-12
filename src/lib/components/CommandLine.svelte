@@ -55,11 +55,6 @@
 				aria-label={copyTooltip}
 				title={copyTooltip}
 			>
-				<!-- <img
-					src="/copy.svg"
-					alt="Copy command"
-					class="w-4 h-4 opacity-80 group-hover:opacity-100 transition"
-				/> -->
 				<i
 					class="icon-[material-symbols--content-copy-outline-rounded] opacity-80 group-hover:opacity-100 transition"
 				></i>
@@ -73,8 +68,9 @@
 				aria-label={copyTooltip}
 				title={copyTooltip}
 			>
-				<i class="icon-[material-symbols--check-rounded] opacity-80 group-hover:opacity-100 transition"></i>
-				<!-- <img src="/check.svg" alt="Copied!" class="w-4 h-4 text-success" /> -->
+				<i
+					class="icon-[material-symbols--check-rounded] opacity-80 group-hover:opacity-100 transition"
+				></i>
 			</button>
 		{/if}
 	</div>
