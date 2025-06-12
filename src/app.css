@@ -7,8 +7,8 @@ layer(base);
 
 @theme {
 	--color-bg: #222222;
-	--color-bg-light: #f7f7f7;
-	--color-primary: #fce566;
+	--color-bg-light: #eee;
+	--color-primary: #3b82f6;
 	--color-secondary: #2d307a;
 	--color-border: #282828;
 	--color-mute: #b2afab;
@@ -16,7 +16,6 @@ layer(base);
 	--color-dark: #211f22;
 	--color-error: #fc608c;
 	--color-cool: #fd5e08;
-
 	--font-display: 'Rubik', sans-serif;
 }
 
