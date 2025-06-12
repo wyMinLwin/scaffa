@@ -12,7 +12,7 @@
 <button
 	aria-label="{props.type} page"
 	class={cn([
-		'min-w-[150px] sm:min-w-[200px]  px-4 py-2 bg-transparent border border-light/10 light:border-dark/30 text-white rounded-md hover:border-primary/80 light:hover:border-primary/90 transition-all duration-300',
+		'min-w-[150px] sm:min-w-[200px]  px-4 py-2 bg-transparent border border-light/10 light:border-dark/30 text-white rounded-md hover:border-primary transition-all duration-300',
 		props.type === 'previous' ? 'text-left' : 'text-right',
 		props.class
 	])}

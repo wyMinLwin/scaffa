@@ -43,7 +43,7 @@
 		</h2>
 		<CommandLine command={'npx create-scaffa@latest'}>
 			<pre class="select-all font-mono"><span class="text-cool">npx</span>&nbsp;<span
-					class="text-primary light:text-secondary">create-scaffa@latest</span
+					class="text-primary">create-scaffa@latest</span
 				></pre>
 		</CommandLine>
 		<span class="text-xs text-mute light:text-dark/70 mt-1">Click to copy the install command</span>
@@ -52,7 +52,7 @@
 	<div class="w-full max-w-[340px] flex flex-col gap-3 mt-3">
 		<a
 			href="/docs"
-			class="border border-light/10 light:border-dark/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-300 hover:scale-105 hover:bg-light/5 hover:light:bg-dark/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+			class="border border-light/10 light:border-dark/10 gap-3 p-4 rounded-lg flex justify-between items-center transition-transform duration-300 hover:scale-105 hover:bg-light/5 hover:light:bg-dark/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
 			aria-label="Go to Documentation"
 		>
 			<span class="font-medium">Documentation</span>
@@ -63,11 +63,11 @@
 		<a
 			href="https://github.com/wyMinLwin/Scaffa"
 			target="_blank"
-			class="border border-light/10 light:border-dark/10 text-primary light:text-dark gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-300 hover:scale-105 hover:bg-light/5 hover:light:bg-dark/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+			class="border border-light/10 light:border-dark/10 text-[#f2ba02] gap-3 p-4 rounded-lg flex justify-between items-center transition-all duration-300 hover:scale-105 hover:bg-light/5 hover:light:bg-dark/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
 			aria-label="Star on GitHub"
 		>
 			<span class="font-medium">Star the repository on GitHub</span>
-			<i class="icon-[material-symbols--star-rounded] text-primary light:text-dark text-xl"></i>
+			<i class="icon-[material-symbols--star-rounded] text-[#f2ba02] text-xl"></i>
 			<!-- <img src="/star-fill.svg" alt="star" class="w-5 h-5" /> -->
 		</a>
 	</div>

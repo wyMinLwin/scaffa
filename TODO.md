@@ -8,6 +8,4 @@
 
 - To Add **code of conduct**.
 
-- To re-brand **logo** and **primary color**.
-
 - To remove unnecessary files(svgs).
