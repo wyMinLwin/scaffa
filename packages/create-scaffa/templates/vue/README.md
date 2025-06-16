@@ -1,8 +1,8 @@
-# React Standard Template
+# Vue Standard Template
 
 ## Tech Stack
 
-**Client UI:** React, Typescript, TailwindCSS, Shadcn
+**Client UI:** Vue, Typescript, TailwindCSS, Pinia
 
 **Client Data Fetch:** Axios, Tanstack
 
@@ -23,39 +23,41 @@ pnpm run
 ## Folder Structure
 
 <pre>
-react-std-backbone/
+vue/
 ├── .gitignore
-├── components.json
-├── eslint.config.js
+├── .editorconfig
+├── .gitattributes
+├── .prettierrc.json
+├── .vscode/
+│   ├── extensions.json
+│   └── settings.json
+├── env.d.ts
+├── eslint.config.ts
 ├── index.html
 ├── package.json
 ├── pnpm-lock.yaml
-├── postcss.config.js
 ├── public/
 ├── README.md
 ├── src/
 │   ├── api/
 │   │   ├── index.ts
 │   │   └── products/
-│   ├── App.tsx
+│   ├── App.vue
 │   ├── assets/
+│   │   └── index.css
 │   ├── components/
-│   │   ├── ui/
-│   │   └── Wrapper.tsx
-│   ├── configs/
-│   ├── index.css
-│   ├── layouts/
-│   │   └── DefaultLayout.tsx
-│   ├── lib/
+│   ├── config/
+│   │   └── axios.ts
+│   ├── layout/
+│   │   └── DefaultLayout.vue
 │   ├── locales/
-│   ├── main.tsx
+│   ├── main.ts
 │   ├── modules/
 │   │   └── home/
-│   │       └── HomeView.tsx
+│   │       └── HomeView.vue
 │   ├── router/
-│   │   └── Router.ts
-│   ├── shared/
-│   └── vite-env.d.ts
+│   │   └── index.ts
+│   └── stores/
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json

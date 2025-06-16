@@ -1,83 +1,47 @@
-# Create Your Own Templates
+# Contributing to create-scaffa
 
-## Todo
+Thank you for your interest in contributing to **create-scaffa**!
 
-1. Create new project as you want in **packages/create-scaffa/templates**.
-2. Add new template object as show in below in **packages/create-scaffa/templates.js**.
+> **Note:** We are **not accepting new template contributions** at this time. Please do not submit pull requests for new templates or modifications to existing templates.
 
-**To add a template you have two options**
+## How You Can Contribute
 
-1. Non-Option Template (can have only 1 variant)
-2. Option Template (can have more than 1 variant)
+We welcome and appreciate contributions in the following areas:
 
-### Non-Option Templates
+### 1. Reporting Bugs
+- If you find a bug, please [open an issue](https://github.com/your-repo-url/issues) with clear steps to reproduce, expected behavior, and environment details.
 
-Example structure for Non-Option Templates
+### 2. Improving Documentation
+- Help us keep our documentation clear, up-to-date, and comprehensive.
+- Fix typos, clarify instructions, or add missing information.
 
-```bash
-...
-packages/
-├── create-scaffa/
-│   ├── bin/
-│   │   └── index.js
-│   └── templates/
-│       └── your-project/
-...
-```
+### 3. Suggesting Features
+- If you have an idea for a new feature or improvement, please [open a discussion or issue](https://github.com/your-repo-url/discussions) to share your thoughts.
 
-```bash
-//templates.js
-export default [
-    ...,
-	{
-        name: YOUR_TEMPLATE_DISPLAY_NAME,
-        value: YOUR_TEMPLATE_FOLDER_NAME,
-        color: YOUR_TEMPLATE_ACTIVE_COLOR,
-    },
-];
-```
+### 4. Fixing Issues
+- Check the [issue tracker](https://github.com/your-repo-url/issues) for open issues labeled `help wanted` or `good first issue`.
+- Submit pull requests to fix bugs or improve existing functionality.
 
-### Option Templates
+### 5. Improving the CLI/Core Logic
+- Refactor code for better readability, maintainability, or performance.
+- Add new options or improve the user experience of the CLI.
 
-Example structure for Option Templates
+### 6. Writing and Improving Tests
+- Increase test coverage or improve existing tests.
 
-```bash
-...
-packages/
-├── create-scaffa/
-│   ├── bin/
-│   │   └── index.js
-│   └── templates/
-│       └── your-root-folder/
-│           ├── your-project-folder-1/
-│           └── your-project-folder-2/
-...
-```
+### 7. Reviewing Pull Requests
+- Provide constructive feedback on open pull requests.
 
-```bash
-//templates.js
-export default [
-    ...,
-	{
-        name: YOUR_TEMPLATE_DISPLAY_NAME,
-        value: YOUR_TEMPLATE_ROOT_FOLDER_NAME,
-        color: YOUR_TEMPLATE_ACTIVE_COLOR,
-        options: [
-			{
-				name: YOUR_TEMPLATE_OPTION_NAME,
-				value: YOUR_TEMPLATE_FOLDER_NAME
-			},
-		]
-    },
-];
-```
+## Code of Conduct
 
-**Awesome! That's all.**
+Please note that this project is released with a [Code of Conduct](../../CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-## Rules
+## Getting Started
 
-**Maintainers will reject PR If you break one of the rules**
+1. Fork the repository and clone it locally.
+2. Install dependencies using `pnpm install`.
+3. Make your changes in a new branch.
+4. Ensure all tests pass and your code follows the project's linting rules.
+5. Submit a pull request with a clear description of your changes.
 
-- **You are not allowed to change index of your templates except you are a maintainer.**
-- **You are not allowed to change the existing templates names and paths.**
-- **You must follow the path for options and non-options path structure for code correctness.**
+Thank you for helping make **create-scaffa** better!

@@ -1,6 +1,6 @@
 {
   "name": "create-scaffa",
-  "version": "2.3.4",
+  "version": "3.0.0",
   "description": "All in one pre setup frontend templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/wyMinLwin/scaffa/issues"
   },
-  "homepage": "https://github.com/wyMinLwin/scaffa#readme",
+  "homepage": "http://scaffa.vercel.app/",
   "scripts": {
     "dev": "node ."
   },

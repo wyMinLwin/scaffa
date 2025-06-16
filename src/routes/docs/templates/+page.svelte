@@ -11,9 +11,8 @@
 	<h1 class="text-3xl font-semibold">Available Templates</h1>
 
 	<section>
-		<h2 class="text-2xl font-medium mt-8 mb-3">
-			React Standard <span class="text-base text-primary">(react-std)</span>
-		</h2>
+		<h2 class="text-2xl font-medium mt-10 mb-3 text-primary">React</h2>
+
 		<p>
 			A modern <strong>React + TypeScript</strong> template with two variants, providing a solid foundation
 			for scalable applications.
@@ -52,9 +51,7 @@
 	</section>
 
 	<section>
-		<h2 class="text-2xl font-medium mt-10 mb-3">
-			Vue Standard <span class="text-base text-primary">(vue-std)</span>
-		</h2>
+		<h2 class="text-2xl font-medium mt-10 mb-3 text-primary">Vue</h2>
 		<p>
 			A robust <strong>Vue 3 + TypeScript</strong> template with best practices for modern web apps.
 		</p>

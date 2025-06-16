@@ -1,5 +1,5 @@
 export default {
-	template: 'react-std-backbone',
+	template: 'react-colorful',
 	library: 'react',
 	supportscaffa: true
 };
