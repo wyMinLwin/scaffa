@@ -1,5 +1,5 @@
 export default {
-  template: 'vue-std',
+  template: 'vue',
   library: 'vue',
   supportscaffa: true,
 }

@@ -39,10 +39,10 @@
 				Choose a template using the <code class="text-primary">-t</code> or
 				<code class="text-primary">-template</code> flag:
 			</p>
-			<CommandLine command={'npx create-scaffa@latest -t react-std'} class="w-fit mt-1.5">
+			<CommandLine command={'npx create-scaffa@latest -t react'} class="w-fit mt-1.5">
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
 						>create-scaffa@latest</span
-					>&nbsp;<span class="text-cool">-t</span>&nbsp;<span class="text-primary">react-std</span
+					>&nbsp;<span class="text-cool">-t</span>&nbsp;<span class="text-primary">react</span
 					></pre>
 			</CommandLine>
 		</div>
@@ -68,13 +68,13 @@
 			<h2 class="text-xl font-medium">Complete Example</h2>
 			<p>Combining all options:</p>
 			<CommandLine
-				command={'npx create-scaffa@latest my-project -t react-std -p pnpm'}
+				command={'npx create-scaffa@latest my-project -t react -p pnpm'}
 				class="w-fit mt-1.5"
 			>
 				<pre><span class="text-cool">npx</span>&nbsp;<span class="text-primary"
 						>create-scaffa@latest</span
 					>&nbsp;<span class="text-error">my-project</span>&nbsp;<span class="text-cool">-t</span
-					>&nbsp;<span class="text-primary">react-std</span>&nbsp;<span class="text-cool">-p</span
+					>&nbsp;<span class="text-primary">react</span>&nbsp;<span class="text-cool">-p</span
 					>&nbsp;<span class="text-primary">pnpm</span></pre>
 			</CommandLine>
 		</div>

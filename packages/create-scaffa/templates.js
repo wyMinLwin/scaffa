@@ -1,18 +1,18 @@
 export default [
 	{
-		name: 'React Standard',
-		value: 'react-std',
+		name: 'React',
+		value: 'react',
 		color: '#57C4DC',
 		options: [
 			{
-				name: "Backbone (Bare UI only codebase and examples are setup.)",
-				value: 'react-std-backbone'
+				name: 'Backbone (Bare UI only codebase and examples are setup.)',
+				value: 'backbone'
 			},
 			{
-				name: "colorful (With Beautiful UI examples)",
-				value: 'react-std-colorful'
+				name: 'Colorful (With Beautiful UI examples)',
+				value: 'colorful'
 			}
 		]
 	},
-	{ name: 'Vue Standard', value: 'vue-std', color: '#41B883' }
+	{ name: 'Vue', value: 'vue', color: '#41B883' }
 ];

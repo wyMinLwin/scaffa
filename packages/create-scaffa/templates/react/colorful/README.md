@@ -23,7 +23,7 @@ pnpm run
 ## Folder Structure
 
 <pre>
-react-std-colorful/
+react-colorful/
 ├── .gitignore
 ├── components.json
 ├── eslint.config.js

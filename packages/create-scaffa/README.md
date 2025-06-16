@@ -35,17 +35,17 @@ npx create-scaffa@latest <ur-project-name> -t <template> -p <package-manager>
 **Example**
 
 ```sh
-npx create-scaffa@latest scaffa-starter -t vue-std -p pnpm
+npx create-scaffa@latest scaffa-starter -t vue -p pnpm
 ```
 
 **Check available templates [here](#templates).**
 
 ### Templates
 
-| Template      | Tech Stack                                  |
-| ------------- | ------------------------------------------- |
-| **react-std** | TypeScript, ShadcnUI, Axios, TanStack Query |
-| **vue-std**   | TypeScript, ShadcnUI, Axios, TanStack Query |
+| Template  | Tech Stack                                  |
+| --------- | ------------------------------------------- |
+| **react** | TypeScript, ShadcnUI, Axios, TanStack Query |
+| **vue**   | TypeScript, ShadcnUI, Axios, TanStack Query |
 
 Each template includes
 **routing**,

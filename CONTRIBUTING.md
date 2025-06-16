@@ -25,7 +25,7 @@ Run CLI locally
 pnpm dev
 ```
 
-See [Guide](packages/create-scaffa/CONTRIBUTING.md) to create your own templates.
+See [contribution guide](packages/create-scaffa/CONTRIBUTING.md).
 
 ### Root Project
 
