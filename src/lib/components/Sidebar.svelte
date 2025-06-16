@@ -5,11 +5,13 @@
 			items: [
 				{
 					title: 'Introduction',
-					path: '/docs'
+					path: '/docs',
+					isVisible: true
 				},
 				{
 					title: 'Installation',
-					path: '/docs/installation'
+					path: '/docs/installation',
+					isVisible: true
 				}
 			]
 		},
@@ -18,8 +20,19 @@
 			items: [
 				{
 					title: 'Templates',
-					path: '/docs/templates'
+					path: '/docs/templates',
+					isVisible: true
 				},
+				{
+					title: 'React',
+					path: '/docs/react',
+					isVisible: false
+				},
+				{
+					title: 'Vue',
+					path: '/docs/vue',
+					isVisible: false
+				}
 			]
 		}
 	];
@@ -35,24 +48,30 @@
 	});
 </script>
 
-<aside class="w-full h-full hidden md:block overflow-y-auto pt-4 border-r-[1px] border-light/10 light:border-dark/10">
+<aside
+	class="w-full h-full hidden md:block overflow-y-auto pt-4 border-r-[1px] border-light/10 light:border-dark/10"
+>
 	{#each docs as group (group.group)}
-		<div class="px-4 mb-5 pb-5 last:border-none space-y-2 border-b-[1px] border-light/10 light:border-dark/10">
+		<div
+			class="px-4 mb-5 pb-5 last:border-none space-y-2 border-b-[1px] border-light/10 light:border-dark/10"
+		>
 			<h2 class="text-sm text-light light:text-dark font-base tracking-wider">
 				{group.group}
 			</h2>
 			<ul class="cursor-pointer flex flex-col space-y-1.5">
 				{#each group.items as item (item.path)}
-					<li
-						class={cn([
-							'hover:text-primary transition-all text-sm duration-300 text-start tracking-wider',
-							currentPath === item.path ? 'text-primary' : 'text-light light:text-dark'
-						])}
-					>
-						<a href={item.path} class="block">
-							{item.title}
-						</a>
-					</li>
+					{#if item.isVisible}
+						<li
+							class={cn([
+								'hover:text-primary transition-all text-sm duration-300 text-start tracking-wider',
+								currentPath === item.path ? 'text-primary' : 'text-light light:text-dark'
+							])}
+						>
+							<a href={item.path} class="block">
+								{item.title}
+							</a>
+						</li>
+					{/if}
 				{/each}
 			</ul>
 		</div>

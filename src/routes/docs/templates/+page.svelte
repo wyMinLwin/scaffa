@@ -105,6 +105,21 @@ src/
         </pre>
 	</section>
 
+	<section>
+		<h2 class="text-2xl font-medium mt-10 mb-3">Pick your template</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+			<a href="/docs/react" class="h-32 col-span-1 flex flex-col items-center justify-center gap-2 p-4 bg-light/10 light:bg-dark/5 border-px border-mute  rounded-lg">
+				<i class="icon-[fa6-brands--react] text-4xl"></i>
+				<p>React</p>
+			</a>
+			<a href="/docs/vue" class="h-32 col-span-1 flex flex-col items-center justify-center gap-2 p-4 bg-light/10 light:bg-dark/5 border-px border-mute  rounded-lg">
+				<i class="icon-[famicons--logo-vue]  text-4xl"></i>
+				<p>Vue</p>
+			</a>
+		</div>
+		
+	</section>
+
 	<div class="w-full flex justify-between items-center mt-16">
 		<NavButton class="w-1/3" type="previous" path="/docs/installation" label="Installation" />
 	</div>
