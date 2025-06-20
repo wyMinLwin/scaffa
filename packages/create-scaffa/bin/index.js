@@ -8,8 +8,8 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
-import 'dotenv/config';
 import templates from '../templates.js';
+import pkg from '../package.json' assert { type: 'json' };
 
 const availablePackageManagers = [
 	{ name: 'NPM', value: 'npm' },
@@ -267,6 +267,15 @@ const installDependencies = async (packageManager) => {
 	});
 };
 
+const generateScaffaJSON = async (path, template) => {
+	const scaffaJson = {
+		schema: 'http://json-schema.org/draft-07/schema#',
+		template: template,
+		version: pkg.version
+	};
+	await fs.promises.writeFile(path, JSON.stringify(scaffaJson, null, 2));
+};
+
 const generateTemplate = async (projectName, template, packageManager, templateType) => {
 	await cloneRepo(projectName);
 	// Change directory to the cloned project
@@ -277,6 +286,7 @@ const generateTemplate = async (projectName, template, packageManager, templateT
 	await cleanUp(projectRootPath);
 	await moveTempFilesIntoRoot(tempDir, projectRootPath);
 	await changePackageJSON(projectRootPath, projectName);
+	await generateScaffaJSON(path.join(projectRootPath, 'scaffa.json'), template);
 	initializingSpinner.stop();
 	await installDependencies(packageManager);
 };
