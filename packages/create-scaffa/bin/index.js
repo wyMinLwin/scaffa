@@ -272,7 +272,7 @@ const installDependencies = async (packageManager) => {
 const generateScaffaJSON = async (path, template) => {
 	const scaffaJson = {
 		$schema: 'https://scaffa.vercel.app/schema.json',
-		template: template,
+		library: template,
 		version: packageVersion
 	};
 	await fs.promises.writeFile(path, JSON.stringify(scaffaJson, null, 2));

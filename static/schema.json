@@ -11,6 +11,5 @@
       "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[\\da-zA-Z-]+(?:\\.[\\da-zA-Z-]+)*)?(?:\\+[\\da-zA-Z-]+(?:\\.[\\da-zA-Z-]+)*)?$"
     }
   },
-  "required": ["library", "version"],
-  "additionalProperties": false
+  "required": ["library", "version"]
 }
