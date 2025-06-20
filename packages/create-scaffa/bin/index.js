@@ -11,7 +11,7 @@ import { spawn } from 'child_process';
 import templates from '../templates.js';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { version:packageVersion } = require('../package.json');
+const { version: packageVersion } = require('../package.json');
 
 const availablePackageManagers = [
 	{ name: 'NPM', value: 'npm' },
@@ -271,7 +271,7 @@ const installDependencies = async (packageManager) => {
 
 const generateScaffaJSON = async (path, template) => {
 	const scaffaJson = {
-		schema: 'https://scaffa.vercel.app/schema.json',
+		$schema: 'https://scaffa.vercel.app/schema.json',
 		template: template,
 		version: packageVersion
 	};

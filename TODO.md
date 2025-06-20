@@ -8,4 +8,4 @@
 
 - Validate `scaffa.json` with json validator.
 
-- `support-scaffa` support version which is greater than `3.1.1`.
+- `support-scaffa` support version which is greater than `3.1.2`.
