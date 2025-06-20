@@ -9,7 +9,9 @@ import { createSpinner } from 'nanospinner';
 import { simpleGit } from 'simple-git';
 import { spawn } from 'child_process';
 import templates from '../templates.js';
-import pkg from '../package.json' assert { type: 'json' };
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { version:packageVersion } = require('../package.json');
 
 const availablePackageManagers = [
 	{ name: 'NPM', value: 'npm' },
@@ -269,9 +271,9 @@ const installDependencies = async (packageManager) => {
 
 const generateScaffaJSON = async (path, template) => {
 	const scaffaJson = {
-		schema: 'http://json-schema.org/draft-07/schema#',
+		schema: 'https://scaffa.vercel.app/schema.json',
 		template: template,
-		version: pkg.version
+		version: packageVersion
 	};
 	await fs.promises.writeFile(path, JSON.stringify(scaffaJson, null, 2));
 };
