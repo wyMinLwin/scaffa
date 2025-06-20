@@ -6,6 +6,6 @@
 
 - Update **Documentation website** (For Full Details).
 
-- Generate `scaffa.json` with version of `create-scaffa` and pass along to generated templates.
-
 - Validate `scaffa.json` with json validator.
+
+- `support-scaffa` support version which is greater than `3.1.0`.
