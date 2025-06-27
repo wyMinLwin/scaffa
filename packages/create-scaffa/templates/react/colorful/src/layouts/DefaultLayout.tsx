@@ -1,3 +1,4 @@
+import { CommandDialog } from '@/components/CommandDialog';
 import { Navbar } from '@/components/Navbar';
 import { Sidebar } from '@/components/Sidebar';
 import { useThemeStore } from '@/lib/theme';
@@ -13,20 +14,23 @@ const DefaultLayout = () => {
 	}, [theme]);
 
 	return (
-		<div
-			className={cn(
-				'flex h-screen',
-				theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'
-			)}
-		>
-			<Sidebar />
-			<div className="flex flex-col flex-1">
-				<Navbar />
-				<main className="font-display p-2">
-					<Outlet />
-				</main>
+		<>
+			<div
+				className={cn(
+					'flex h-screen overflow-hidden',
+					theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'
+				)}
+			>
+				<Sidebar />
+				<div className="flex flex-col flex-1 overflow-hidden">
+					<Navbar />
+					<main className="flex-1 overflow-y-auto p-4">
+						<Outlet />
+					</main>
+				</div>
 			</div>
-		</div>
+			<CommandDialog />
+		</>
 	);
 };
 
