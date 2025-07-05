@@ -1,5 +1,11 @@
 # Scaffa Packages
 
+## create-scaffa
+
+CLI tool of scaffa that generate frontend templates.
+[![npm version](https://img.shields.io/npm/v/create-scaffa.svg)](https://www.npmjs.com/package/create-scaffa)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 ## Overview
 
 This directory contains the core packages for the Scaffa project. Each package serves a specific purpose in the overall project structure.
@@ -60,4 +66,4 @@ When you run the above command, you will be prompted to:
 
 ## License
 
-This project is licensed under the [MIT License](../../LICENSE).
+This project is licensed under the [MIT License](LICENSE).
