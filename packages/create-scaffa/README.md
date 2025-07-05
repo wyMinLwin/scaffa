@@ -3,6 +3,7 @@
 ## create-scaffa
 
 CLI tool of scaffa that generate frontend templates.
+
 [![npm version](https://img.shields.io/npm/v/create-scaffa.svg)](https://www.npmjs.com/package/create-scaffa)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
