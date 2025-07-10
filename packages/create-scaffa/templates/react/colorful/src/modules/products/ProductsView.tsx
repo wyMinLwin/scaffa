@@ -72,20 +72,35 @@ const ProductsView = () => {
 			</div>
 
 			{/* Metrics Section */}
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-				<Card>
-					<CardHeader>
-						<CardTitle className="flex items-center gap-2">
-							<Boxes className="w-5 h-5 text-primary" />
-							Total Products
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="text-3xl font-bold">{productsQuery.data?.length ?? '—'}</div>
-						<p className="text-xs text-muted-foreground">Products Available</p>
-					</CardContent>
-				</Card>
-			</div>
+			{productsQuery.isLoading ? (
+				<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+					{Array.from({ length: 1 }).map((_, idx) => (
+						<div
+							key={idx}
+							className="p-4 border border-border rounded-lg bg-card shadow-sm space-y-2"
+						>
+							<Skeleton className="h-4 w-32" />
+							<Skeleton className="h-3 w-24" />
+							<Skeleton className="h-3 w-20" />
+							<Skeleton className="h-3 w-16" />
+						</div>
+					))}
+				</div>
+			) : (
+				<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+					<Card>
+						<CardHeader>
+							<CardTitle className="flex items-center gap-2">
+								<Boxes className="w-5 h-5 text-primary" />
+								Total Products
+							</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<div className="text-3xl font-bold">{productsQuery.data?.length ?? '—'}</div>
+						</CardContent>
+					</Card>
+				</div>
+			)}
 
 			{/* Add Product */}
 			<Card>
