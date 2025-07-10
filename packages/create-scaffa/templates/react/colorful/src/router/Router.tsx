@@ -1,5 +1,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
-import HomeView from '@/modules/home/HomeView';
+import DashboardView from '@/modules/dashboard/DashboardView';
+import ProductsView from '@/modules/products/ProductsView';
+// import HomeView from '@/modules/home/HomeView';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const Router = () => {
@@ -10,7 +12,11 @@ const Router = () => {
 			children: [
 				{
 					path: '',
-					element: <HomeView />
+					element: <DashboardView />
+				},
+				{
+					path: 'products',
+					element: <ProductsView />
 				}
 			]
 		}
