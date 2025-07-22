@@ -1,5 +1,3 @@
-'use client';
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 import {
