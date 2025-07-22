@@ -1,6 +1,7 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
 import DashboardView from '@/modules/dashboard/DashboardView';
 import ProductsView from '@/modules/products/ProductsView';
+import TodosView from '@/modules/todos/TodosView';
 // import HomeView from '@/modules/home/HomeView';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -17,6 +18,10 @@ const Router = () => {
 				{
 					path: 'products',
 					element: <ProductsView />
+				},
+				{
+					path: 'todos',
+					element: <TodosView />
 				}
 			]
 		}
