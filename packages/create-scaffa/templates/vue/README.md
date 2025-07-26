@@ -1,5 +1,7 @@
 # Vue Standard Template
 
+💚 **[Live Preview](https://vue-scaffa.vercel.app)**
+
 ## Tech Stack
 
 **Client UI:** Vue, Typescript, TailwindCSS, Pinia

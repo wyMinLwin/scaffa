@@ -1,5 +1,7 @@
 # React Standard Template
 
+🚀 **[Live Preview](https://backbone-scaffa.vercel.app)**
+
 ## Tech Stack
 
 **Client UI:** React, Typescript, TailwindCSS, Shadcn
