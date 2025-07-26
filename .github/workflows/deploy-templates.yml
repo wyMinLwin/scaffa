@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'packages/create-scaffa/templates/**'
+  pull_request:
+    paths:
+      - 'packages/create-scaffa/templates/**'
   workflow_dispatch:
 
 jobs:

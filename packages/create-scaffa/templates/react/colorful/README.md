@@ -1,5 +1,7 @@
 # React Standard Template
 
+🎨 **[Live Preview](https://colorful-scaffa.vercel.app)**
+
 ## Tech Stack
 
 **Client UI:** React, Typescript, TailwindCSS, Shadcn
