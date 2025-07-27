@@ -11,6 +11,7 @@ type ProductType = {
   brand: string
   sku: string
   weight: number
+  thumbnail?: string
   dimensions: {
     width: number
     height: number
