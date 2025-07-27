@@ -2,13 +2,31 @@
 
 💚 **[Live Preview](https://vue-scaffa.vercel.app)**
 
-## Tech Stack
+A comprehensive Vue.js starter template with modern development tools, beautiful UI components, and best practices built-in.
 
-**Client UI:** Vue, Typescript, TailwindCSS, Pinia
+## ✨ Features
 
-**Client Data Fetch:** Axios, Tanstack
+- 🚀 **Vue 3** with TypeScript for type-safe development
+- 🎨 **Tailwind CSS** for utility-first styling
+- 🧩 **shadcn-vue** components for beautiful, accessible UI
+- 📱 **Responsive Design** that works on all devices
+- 🌍 **Internationalization** with Vue I18n
+- 📊 **State Management** with Pinia
+- 🔄 **Data Fetching** with TanStack Query
+- 🎯 **API Integration** with Axios
+- 🏗️ **Modern Build Tools** with Vite
+- 📁 **Organized Structure** with modules and components
 
-## Run Locally
+## 🛠 Tech Stack
+
+**Framework:** Vue 3, TypeScript  
+**Styling:** Tailwind CSS, shadcn-vue  
+**State Management:** Pinia  
+**Data Fetching:** TanStack Query, Axios  
+**Build Tool:** Vite  
+**Internationalization:** Vue I18n
+
+## 🚀 Quick Start
 
 **Install Dependencies**
 
@@ -16,11 +34,36 @@
 pnpm install
 ```
 
-**Run Local Server**
+**Run Development Server**
 
 ```sh
-pnpm run
+pnpm run dev
 ```
+
+**Build for Production**
+
+```sh
+pnpm run build
+```
+
+## 📱 Pages & Features
+
+- **Home** - Welcome page with feature overview and API demo
+- **Dashboard** - Overview with stats cards and recent activity
+- **Products** - Product management with search and add functionality
+- **Todos** - Task management with priority levels and completion tracking
+
+## 🧩 UI Components
+
+Pre-built shadcn-vue components included:
+
+- **Button** - Various styles and sizes
+- **Card** - Content containers with headers and footers
+- **Input** - Form input fields
+- **Badge** - Status indicators and labels
+- **Avatar** - User profile images with fallbacks
+- **Skeleton** - Loading state placeholders
+- **Navigation** - Responsive navbar with mobile menu
 
 ## Folder Structure
 
