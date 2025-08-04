@@ -11,6 +11,7 @@ const HomeView = () => {
 	const { t } = useTranslation();
 	const changeLanguage = (lng: string) => {
 		i18next.changeLanguage(lng);
+		localStorage.setItem('scaffa-locale', lng);
 	};
 	const [input, setInput] = useState('');
 

@@ -15,6 +15,7 @@ const HomeView = () => {
 
 	const changeLanguage = (lng: string) => {
 		i18next.changeLanguage(lng);
+		localStorage.setItem('scaffa-locale', lng);
 	};
 
 	const productsQuery = api.products.getProducts.useQuery();
