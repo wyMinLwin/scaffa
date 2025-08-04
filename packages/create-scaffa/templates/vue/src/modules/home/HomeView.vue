@@ -117,14 +117,14 @@
               <Button
                 variant="outline"
                 @click="changeLanguage('en')"
-                :class="{ 'bg-primary text-primary-foreground': locale === 'en' }"
+                :class="{ 'border-black dark:border-red-200': locale === 'en' }"
               >
                 English
               </Button>
               <Button
                 variant="outline"
                 @click="changeLanguage('mm')"
-                :class="{ 'bg-primary text-primary-foreground': locale === 'mm' }"
+                :class="{ 'border-black dark:border-red-200': locale === 'mm' }"
               >
                 Myanmar
               </Button>
@@ -206,6 +206,7 @@ const queryClient = useQueryClient()
 
 const changeLanguage = (lang: string) => {
   locale.value = lang
+  localStorage.setItem('scaffa-locale', lang)
 }
 
 const { data, isLoading } = api.products.getProducts.useQuery()
