@@ -45,14 +45,13 @@ npx create-scaffa@latest <ur-project-name> -t <template> -p <package-manager>
 npx create-scaffa@latest scaffa-starter -t vue -p pnpm
 ```
 
-**Check available templates [here](#templates).**
-
 ### Templates
 
-| Template  | Tech Stack                                  |
-| --------- | ------------------------------------------- |
-| **react** | TypeScript, ShadcnUI, Axios, TanStack Query |
-| **vue**   | TypeScript, ShadcnUI, Axios, TanStack Query |
+| Template             | Tech Stack                                  | Preview                                               |
+| -------------------- | ------------------------------------------- | ----------------------------------------------------- |
+| **react** (colorful) | TypeScript, ShadcnUI, Axios, TanStack Query | [🎨 Live Preview](https://colorful-scaffa.vercel.app) |
+| **react** (backbone) | TypeScript, ShadcnUI, Axios, TanStack Query | [🚀 Live Preview](https://backbone-scaffa.vercel.app) |
+| **vue**              | TypeScript, ShadcnUI, Axios, TanStack Query | [💚 Live Preview](https://vue-scaffa.vercel.app)      |
 
 Each template includes
 **routing**,
