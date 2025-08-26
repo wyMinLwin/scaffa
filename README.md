@@ -70,6 +70,10 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 **It's really important to follow instructions of**
 [Contributing Guide](CONTRIBUTING.md).
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=wyminlwin/scaffa&type=Timeline&theme=dark)](https://www.star-history.com/#wyminlwin/scaffa&Date)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
