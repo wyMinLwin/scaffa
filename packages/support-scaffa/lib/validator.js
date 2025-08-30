@@ -2,6 +2,7 @@ import Ajv from 'ajv';
 import fs from 'fs';
 import path from 'path';
 import { formatAjvError } from './errorHandler.js';
+const MIN_VERSION = '3.1.3';
 
 const checkSchema = async (schema, content) => {
 	// allErrors to report all issues instead of stopping at the first one
@@ -16,9 +17,16 @@ const checkSchema = async (schema, content) => {
 };
 
 const checkVersion = async (content) => {
-	const version = content.version;
-	if (version.split('.').join('') < '313') {
-		throw new Error('Scaffa JSON version less than 3.1.3 is not supported!');
+	const minVersion = MIN_VERSION.split('.').map(Number);
+	const requestVersion = content.version.split('.').map(Number);
+
+	let maxLength = Math.max(minVersion.length, requestVersion.length);
+	for (let i = 0; i < maxLength; i++) {
+		if ((requestVersion[i] || 0) < (minVersion[i] || 0)) {
+			throw new Error(
+				`Scaffa JSON version ${content.version} is less than ${MIN_VERSION} and is not supported!`
+			);
+		}
 	}
 };
 
