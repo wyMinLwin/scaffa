@@ -4,4 +4,3 @@
 
 - Update **Documentation website** (For Full Details).
 
-- `support-scaffa` support version which is greater than `3.1.3`.
