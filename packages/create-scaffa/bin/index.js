@@ -5,13 +5,9 @@ import path from 'path';
 import chalk from 'chalk';
 import gradient from 'gradient-string';
 import inquirer from 'inquirer';
-import { createSpinner } from 'nanospinner';
-import { simpleGit } from 'simple-git';
+import { downloadTemplate } from 'giget'
 import { spawn } from 'child_process';
 import templates from '../templates.js';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const { version: packageVersion } = require('../package.json');
 
 const availablePackageManagers = [
 	{ name: 'NPM', value: 'npm' },
@@ -127,7 +123,7 @@ inquirer
 					}
 				])
 				.then((optionAnswers) => {
-					generateTemplate(
+					main(
 						aliasSchema.name ?? basicAnswers.projectName,
 						aliasSchema.template ?? basicAnswers.chooseTemplate,
 						aliasSchema.packageManager ?? basicAnswers.choosePackageManager,
@@ -138,7 +134,7 @@ inquirer
 					console.log(chalk.hex('#eb392d')('Goodbye!'));
 				});
 		} else {
-			generateTemplate(
+			main(
 				aliasSchema.name ?? basicAnswers.projectName,
 				aliasSchema.template ?? basicAnswers.chooseTemplate,
 				aliasSchema.packageManager ?? basicAnswers.choosePackageManager,
@@ -149,9 +145,6 @@ inquirer
 	.catch(() => {
 		console.log(chalk.hex('#eb392d')('Goodbye!'));
 	});
-
-const cloneSpinner = createSpinner('Cloning Repository...');
-const initializingSpinner = createSpinner('Initializing Repository...');
 
 //generate command based on package manager
 const generateCommand = (packageManager) => {
@@ -165,80 +158,36 @@ const generateCommand = (packageManager) => {
 	}
 };
 
-const copyIgnoreList = ['node_modules', '.vercel', '.svelte-kit', '.build'];
-// Copy files recursively
-const copyFiles = async (src, dest, destRoot) => {
-	const entries = await fs.promises.readdir(src, { withFileTypes: true });
-	for (let entry of entries) {
-		const srcPath = path.join(src, entry.name);
-		// Skip copying if srcPath is the destination folder
-		if (destRoot && path.resolve(srcPath) === path.resolve(destRoot)) {
-			continue;
-		}
-		const destPath = path.join(dest, entry.name);
-		if (copyIgnoreList.includes(entry.name)) {
-			continue;
-		}
-		if (entry.isDirectory()) {
-			await fs.promises.mkdir(destPath, { recursive: true });
-			await copyFiles(srcPath, destPath, destRoot);
-		} else {
-			await fs.promises.copyFile(srcPath, destPath);
-		}
+// copy template
+const copyTemplate = async (name, template, templateType) => {
+	// Copy template files to the new project directory
+	const templatePath = path.join(process.cwd(), 'templates', template);
+	const destinationPath = path.join(process.cwd(), name);
+	let sourcePath = templatePath;
+	if (templateType) {
+		sourcePath = path.join(templatePath, templateType);
+	}
+	try {
+		await fs.promises.cp(sourcePath, destinationPath, { recursive: true });
+	} catch (err) {
+		console.log(chalk.red('Failed to copy template files:'), err);
 	}
 };
 
-// Clone the repository and copy the template files
-const cloneRepo = async (projectName) => {
-	cloneSpinner.start();
-	if (process.env.npm_lifecycle_event === 'dev') {
-		await copyLocalRepo(projectName);
-	} else {
-		await simpleGit().clone('https://github.com/wyMinLwin/Scaffa.git', projectName);
-	}
-	cloneSpinner.stop();
-};
-
-const copyLocalRepo = async (projectName) => {
-	const localRepoPath = path.join(process.cwd(), '../../');
-	await fs.promises.mkdir(projectName, { recursive: false });
-	await copyFiles(localRepoPath, projectName, projectName);
-};
-
-// Copy Temporary Selected Template into
-const copyTemporarilySelectedTemplate = async (template, projectRootPath, templateType) => {
-	// Path to the template files
-	const templatePath = templateType
-		? path.join(process.cwd(), 'packages/create-scaffa/templates', template, templateType)
-		: path.join(process.cwd(), 'packages/create-scaffa/templates', template);
-	initializingSpinner.start();
-	// Copy template files to a temporary location
-	const tempDir = path.join(projectRootPath, 'temp');
-	await fs.promises.mkdir(tempDir, { recursive: true });
-	await copyFiles(templatePath, tempDir, tempDir);
-	return tempDir;
-};
-
-const cleanUp = async (projectRootPath) => {
-	// Remove all files in the root of the cloned project (except temp)
-	const rootEntries = await fs.promises.readdir(projectRootPath, {
-		withFileTypes: true
-	});
-	for (let entry of rootEntries) {
-		const entryPath = path.join(projectRootPath, entry.name);
-		if (entry.isDirectory() && entry.name !== 'temp') {
-			await fs.promises.rm(entryPath, { recursive: true, force: true });
-		} else if (entry.name !== 'temp') {
-			await fs.promises.unlink(entryPath);
+// Get template
+const getTemplate = async (name, template, templateType) => {
+	try {
+		const basePath = `gh:wyminlwin/scaffa/packages/create-scaffa/templates/${template}`;
+		if (templateType) {
+			return path.join(basePath, templateType);
 		}
+		await downloadTemplate(basePath, {
+			dir: name
+		})
+	} catch (err) {
+		console.log(chalk.red('Failed to download template files:'), err);
 	}
-};
-
-const moveTempFilesIntoRoot = async (tempDir, projectRootPath) => {
-	// Paste the copied files into the root of the cloned project
-	await copyFiles(tempDir, projectRootPath, projectRootPath);
-	await fs.promises.rm(tempDir, { recursive: true, force: true });
-};
+}
 
 const changePackageJSON = async (projectRootPath, projectName) => {
 	// Update package.json with the new project name
@@ -254,41 +203,30 @@ const changePackageJSON = async (projectRootPath, projectName) => {
 };
 
 const installDependencies = async (packageManager) => {
-	console.log(chalk.blue('~ Installing Dependencies... ~'));
 	const installProcess = spawn(generateCommand(packageManager), {
 		stdio: 'inherit',
 		shell: true
 	});
 	installProcess.on('close', (code) => {
 		if (code === 0) {
-			console.log(chalk.greenBright('Project created successfully!'));
+			console.log(chalk.blue('Dependencies installed successfully!'));
 			console.log(chalk.greenBright('Happy Coding!'));
+
 		} else {
 			console.log(chalk.redBright('\n\nSomething went wrong!'));
 		}
 	});
 };
 
-const generateScaffaJSON = async (path, template) => {
-	const scaffaJson = {
-		$schema: 'https://scaffa.vercel.app/schema.json',
-		library: template,
-		version: packageVersion
-	};
-	await fs.promises.writeFile(path, JSON.stringify(scaffaJson, null, 2));
-};
-
-const generateTemplate = async (projectName, template, packageManager, templateType) => {
-	await cloneRepo(projectName);
-	// Change directory to the cloned project
-	process.chdir(projectName);
-	const projectRootPath = process.cwd();
-
-	const tempDir = await copyTemporarilySelectedTemplate(template, projectRootPath, templateType);
-	await cleanUp(projectRootPath);
-	await moveTempFilesIntoRoot(tempDir, projectRootPath);
-	await changePackageJSON(projectRootPath, projectName);
-	await generateScaffaJSON(path.join(projectRootPath, 'scaffa.json'), template);
-	initializingSpinner.stop();
+const main = async (projectName, template, packageManager, templateType) => {
+	if (process.env.npm_lifecycle_event === 'dev') {
+		await copyTemplate(projectName, template, templateType);
+	} else {
+		await getTemplate(projectName, template, templateType)
+	}
+	const generatedProjectPath = path.join(process.cwd(), projectName);
+	// change directory
+	process.chdir(generatedProjectPath);
+	await changePackageJSON(generatedProjectPath, projectName);
 	await installDependencies(packageManager);
 };
