@@ -7,6 +7,7 @@ import gradient from 'gradient-string';
 import inquirer from 'inquirer';
 import { downloadTemplate } from 'giget'
 import { spawn } from 'child_process';
+import { createSpinner } from 'nanospinner';
 import templates from '../templates.js';
 
 const availablePackageManagers = [
@@ -160,73 +161,88 @@ const generateCommand = (packageManager) => {
 
 // copy template
 const copyTemplate = async (name, template, templateType) => {
-	// Copy template files to the new project directory
+	const spinner = createSpinner('Copying template files...').start();
 	const templatePath = path.join(process.cwd(), 'templates', template);
 	const destinationPath = path.join(process.cwd(), name);
-	let sourcePath = templatePath;
-	if (templateType) {
-		sourcePath = path.join(templatePath, templateType);
-	}
+	const sourcePath = templateType ? path.join(templatePath, templateType) : templatePath;
 	try {
 		await fs.promises.cp(sourcePath, destinationPath, { recursive: true });
+		spinner.success({ text: chalk.green('Template files copied!') });
 	} catch (err) {
-		console.log(chalk.red('Failed to copy template files:'), err);
+		spinner.error({ text: chalk.red('Failed to copy template files') });
+		throw err;
 	}
 };
 
 // Get template
 const getTemplate = async (name, template, templateType) => {
+	const spinner = createSpinner('Downloading template...').start();
 	try {
 		const basePath = `gh:wyminlwin/scaffa/packages/create-scaffa/templates/${template}`;
-		if (templateType) {
-			return path.join(basePath, templateType);
-		}
-		await downloadTemplate(basePath, {
-			dir: name
-		})
+		const source = templateType ? path.join(basePath, templateType) : basePath;
+		await downloadTemplate(source, { dir: name });
+		spinner.success({ text: chalk.green('Template downloaded successfully!') });
 	} catch (err) {
-		console.log(chalk.red('Failed to download template files:'), err);
+		spinner.error({ text: chalk.red('Failed to download template') });
+		throw err;
 	}
 }
 
 const changePackageJSON = async (projectRootPath, projectName) => {
-	// Update package.json with the new project name
+	const spinner = createSpinner('Configuring project...').start();
 	const packageJsonPath = path.join(projectRootPath, 'package.json');
 	try {
 		const packageJsonContent = await fs.promises.readFile(packageJsonPath, 'utf8');
 		const packageJson = JSON.parse(packageJsonContent);
 		packageJson.name = projectName;
 		await fs.promises.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
+		spinner.success({ text: chalk.green('Project configured!') });
 	} catch (err) {
-		console.log(chalk.red('Failed to update package.json:'), err);
+		spinner.error({ text: chalk.red('Failed to configure project') });
+		throw err;
 	}
 };
 
-const installDependencies = async (packageManager) => {
-	const installProcess = spawn(generateCommand(packageManager), {
-		stdio: 'inherit',
-		shell: true
-	});
-	installProcess.on('close', (code) => {
-		if (code === 0) {
-			console.log(chalk.blue('Dependencies installed successfully!'));
-			console.log(chalk.greenBright('Happy Coding!'));
-
-		} else {
-			console.log(chalk.redBright('\n\nSomething went wrong!'));
-		}
+const installDependencies = (packageManager) => {
+	const spinner = createSpinner('Installing dependencies...').start();
+	return new Promise((resolve, reject) => {
+		const installProcess = spawn(generateCommand(packageManager), {
+			stdio: 'pipe',
+			shell: true
+		});
+		installProcess.on('close', (code) => {
+			if (code === 0) {
+				spinner.success({ text: chalk.green('Dependencies installed!') });
+				resolve();
+			} else {
+				spinner.error({ text: chalk.red('Failed to install dependencies') });
+				reject(new Error('Installation failed'));
+			}
+		});
+		installProcess.on('error', (err) => {
+			spinner.error({ text: chalk.red('Failed to install dependencies') });
+			reject(err);
+		});
 	});
 };
 
 const main = async (projectName, template, packageManager, templateType) => {
-	if (process.env.npm_lifecycle_event === 'dev') {
-		await copyTemplate(projectName, template, templateType);
-	} else {
-		await getTemplate(projectName, template, templateType)
+	console.log(); // Add spacing after prompts
+	try {
+		if (process.env.npm_lifecycle_event === 'dev') {
+			await copyTemplate(projectName, template, templateType);
+		} else {
+			await getTemplate(projectName, template, templateType);
+		}
+		const generatedProjectPath = path.join(process.cwd(), projectName);
+		process.chdir(generatedProjectPath);
+		await changePackageJSON(generatedProjectPath, projectName);
+		await installDependencies(packageManager);
+		console.log();
+		console.log(chalk.greenBright.bold(('Happy Coding!')));
+	} catch (err) {
+		console.log();
+		console.log(chalk.redBright('Something went wrong!'));
+		process.exit(1);
 	}
-	const generatedProjectPath = path.join(process.cwd(), projectName);
-	// change directory
-	process.chdir(generatedProjectPath);
-	await changePackageJSON(generatedProjectPath, projectName);
-	await installDependencies(packageManager);
 };
