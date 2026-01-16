@@ -1,6 +1,6 @@
 {
   "name": "create-scaffa",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "All in one pre setup frontend templates",
   "author": "Wai Yan Min Lwin",
   "main": "bin/index.js",
@@ -22,6 +22,7 @@
   },
   "files": [
     "bin/index.js",
+    "bin/lib/",
     "templates.js"
   ],
   "keywords": [
