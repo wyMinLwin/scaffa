@@ -14,5 +14,19 @@ export default [
 			}
 		]
 	},
-	{ name: 'Vue', value: 'vue', color: '#41B883' }
+	{
+		name: 'Vue',
+		value: 'vue',
+		color: '#41B883',
+		options: [
+			{
+				name: 'Backbone (Bare UI only codebase and examples are setup.)',
+				value: 'backbone'
+			},
+			{
+				name: 'Colorful (With Beautiful UI examples)',
+				value: 'colorful'
+			}
+		]
+	}
 ];

@@ -1,8 +1,8 @@
-# Vue Standard Template
+# Vue Colorful Template
 
-💚 **[Live Preview](https://vue-scaffa.vercel.app)**
+**[Live Preview](https://vue-colorful.vercel.app)**
 
-A comprehensive Vue.js starter template with modern development tools, beautiful UI components, and best practices built-in.
+A comprehensive Vue.js starter template with modern development tools, beautiful UI components, and best practices built-in. This is the feature-rich version with multiple pages and advanced components.
 
 ## ✨ Features
 
@@ -68,7 +68,7 @@ Pre-built shadcn-vue components included:
 ## Folder Structure
 
 <pre>
-vue/
+vue-colorful/
 ├── .gitignore
 ├── .editorconfig
 ├── .gitattributes

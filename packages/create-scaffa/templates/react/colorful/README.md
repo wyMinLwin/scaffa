@@ -1,6 +1,6 @@
-# React Standard Template
+# React Colorful Template
 
-🎨 **[Live Preview](https://colorful-scaffa.vercel.app)**
+**[Live Preview](https://react-colorful.vercel.app)**
 
 ## Tech Stack
 

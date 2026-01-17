@@ -31,13 +31,9 @@ setup_vercel_project() {
         return 1
     fi
     
-    # Initialize Vercel project
-    echo "Initializing Vercel project..."
-    vercel --confirm
-    
-    # Link to existing project or create new one
+    # Link to existing project or create new one with specified name
     echo "Linking Vercel project..."
-    vercel link --confirm
+    vercel link --yes --project="$project_name"
     
     echo -e "${GREEN}✓ Successfully set up $project_name${NC}"
     echo ""
@@ -62,9 +58,10 @@ fi
 echo -e "${YELLOW}Setting up all template projects...${NC}"
 echo ""
 
-setup_vercel_project "packages/create-scaffa/templates/react/backbone" "scaffa-react-backbone"
-setup_vercel_project "packages/create-scaffa/templates/react/colorful" "scaffa-react-colorful"
-setup_vercel_project "packages/create-scaffa/templates/vue" "scaffa-vue"
+setup_vercel_project "packages/create-scaffa/templates/react/backbone" "react-backbone"
+setup_vercel_project "packages/create-scaffa/templates/react/colorful" "react-colorful"
+setup_vercel_project "packages/create-scaffa/templates/vue/backbone" "vue-backbone"
+setup_vercel_project "packages/create-scaffa/templates/vue/colorful" "vue-colorful"
 
 echo -e "${GREEN}All Vercel projects have been set up!${NC}"
 echo ""

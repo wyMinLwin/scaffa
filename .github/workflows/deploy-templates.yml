@@ -16,7 +16,8 @@ jobs:
     outputs:
       react-backbone: ${{ steps.changes.outputs.react-backbone }}
       react-colorful: ${{ steps.changes.outputs.react-colorful }}
-      vue: ${{ steps.changes.outputs.vue }}
+      vue-backbone: ${{ steps.changes.outputs.vue-backbone }}
+      vue-colorful: ${{ steps.changes.outputs.vue-colorful }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,13 +31,17 @@ jobs:
               - 'packages/create-scaffa/templates/react/backbone/**'
             react-colorful:
               - 'packages/create-scaffa/templates/react/colorful/**'
-            vue:
-              - 'packages/create-scaffa/templates/vue/**'
+            vue-backbone:
+              - 'packages/create-scaffa/templates/vue/backbone/**'
+            vue-colorful:
+              - 'packages/create-scaffa/templates/vue/colorful/**'
 
   deploy-react-backbone:
     needs: detect-changes
     if: needs.detect-changes.outputs.react-backbone == 'true'
     runs-on: ubuntu-latest
+    env:
+      VERCEL_PROJECT_NAME: react-backbone
     steps:
       - uses: actions/checkout@v4
 
@@ -53,6 +58,10 @@ jobs:
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
+
+      - name: Link Vercel Project
+        run: vercel link --yes --project=${{ env.VERCEL_PROJECT_NAME }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/react/backbone
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=${{ github.event_name == 'pull_request' && 'preview' || 'production' }} --token=${{ secrets.VERCEL_TOKEN }}
@@ -73,14 +82,14 @@ jobs:
           script: |
             const output = require('child_process').execSync('vercel ls --yes --token=${{ secrets.VERCEL_TOKEN }}', {encoding: 'utf8'});
             const lines = output.split('\n');
-            const deploymentLine = lines.find(line => line.includes('react-backbone'));
+            const deploymentLine = lines.find(line => line.includes('${{ env.VERCEL_PROJECT_NAME }}'));
             if (deploymentLine) {
               const url = deploymentLine.split(/\s+/)[1];
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `🚀 **React Backbone Template Preview**: https://${url}`
+                body: `**React Backbone Template Preview**: https://${url}`
               });
             }
 
@@ -88,6 +97,8 @@ jobs:
     needs: detect-changes
     if: needs.detect-changes.outputs.react-colorful == 'true'
     runs-on: ubuntu-latest
+    env:
+      VERCEL_PROJECT_NAME: react-colorful
     steps:
       - uses: actions/checkout@v4
 
@@ -104,6 +115,10 @@ jobs:
 
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
+
+      - name: Link Vercel Project
+        run: vercel link --yes --project=${{ env.VERCEL_PROJECT_NAME }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/react/colorful
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=${{ github.event_name == 'pull_request' && 'preview' || 'production' }} --token=${{ secrets.VERCEL_TOKEN }}
@@ -124,21 +139,23 @@ jobs:
           script: |
             const output = require('child_process').execSync('vercel ls --yes --token=${{ secrets.VERCEL_TOKEN }}', {encoding: 'utf8'});
             const lines = output.split('\n');
-            const deploymentLine = lines.find(line => line.includes('react-colorful'));
+            const deploymentLine = lines.find(line => line.includes('${{ env.VERCEL_PROJECT_NAME }}'));
             if (deploymentLine) {
               const url = deploymentLine.split(/\s+/)[1];
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `🎨 **React Colorful Template Preview**: https://${url}`
+                body: `**React Colorful Template Preview**: https://${url}`
               });
             }
 
-  deploy-vue:
+  deploy-vue-backbone:
     needs: detect-changes
-    if: needs.detect-changes.outputs.vue == 'true'
+    if: needs.detect-changes.outputs.vue-backbone == 'true'
     runs-on: ubuntu-latest
+    env:
+      VERCEL_PROJECT_NAME: vue-backbone
     steps:
       - uses: actions/checkout@v4
 
@@ -156,17 +173,21 @@ jobs:
       - name: Install Vercel CLI
         run: pnpm add --global vercel@latest
 
+      - name: Link Vercel Project
+        run: vercel link --yes --project=${{ env.VERCEL_PROJECT_NAME }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/vue/backbone
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=${{ github.event_name == 'pull_request' && 'preview' || 'production' }} --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: packages/create-scaffa/templates/vue
+        working-directory: packages/create-scaffa/templates/vue/backbone
 
       - name: Build Project Artifacts
         run: vercel build ${{ github.event_name != 'pull_request' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: packages/create-scaffa/templates/vue
+        working-directory: packages/create-scaffa/templates/vue/backbone
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt ${{ github.event_name != 'pull_request' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
-        working-directory: packages/create-scaffa/templates/vue
+        working-directory: packages/create-scaffa/templates/vue/backbone
 
       - name: Comment PR with Preview URL
         if: github.event_name == 'pull_request'
@@ -175,13 +196,70 @@ jobs:
           script: |
             const output = require('child_process').execSync('vercel ls --yes --token=${{ secrets.VERCEL_TOKEN }}', {encoding: 'utf8'});
             const lines = output.split('\n');
-            const deploymentLine = lines.find(line => line.includes('vue'));
+            const deploymentLine = lines.find(line => line.includes('${{ env.VERCEL_PROJECT_NAME }}'));
             if (deploymentLine) {
               const url = deploymentLine.split(/\s+/)[1];
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `💚 **Vue Template Preview**: https://${url}`
+                body: `**Vue Backbone Template Preview**: https://${url}`
+              });
+            }
+
+  deploy-vue-colorful:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.vue-colorful == 'true'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_PROJECT_NAME: vue-colorful
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install Vercel CLI
+        run: pnpm add --global vercel@latest
+
+      - name: Link Vercel Project
+        run: vercel link --yes --project=${{ env.VERCEL_PROJECT_NAME }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/vue/colorful
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{ github.event_name == 'pull_request' && 'preview' || 'production' }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/vue/colorful
+
+      - name: Build Project Artifacts
+        run: vercel build ${{ github.event_name != 'pull_request' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/vue/colorful
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt ${{ github.event_name != 'pull_request' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: packages/create-scaffa/templates/vue/colorful
+
+      - name: Comment PR with Preview URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const output = require('child_process').execSync('vercel ls --yes --token=${{ secrets.VERCEL_TOKEN }}', {encoding: 'utf8'});
+            const lines = output.split('\n');
+            const deploymentLine = lines.find(line => line.includes('${{ env.VERCEL_PROJECT_NAME }}'));
+            if (deploymentLine) {
+              const url = deploymentLine.split(/\s+/)[1];
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `**Vue Colorful Template Preview**: https://${url}`
               });
             }
