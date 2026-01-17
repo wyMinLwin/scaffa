@@ -1,6 +1,6 @@
-# React Standard Template
+# React Backbone Template
 
-🚀 **[Live Preview](https://backbone-scaffa.vercel.app)**
+**[Live Preview](https://react-backbone.vercel.app)**
 
 ## Tech Stack
 
