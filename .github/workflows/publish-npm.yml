@@ -1,17 +1,11 @@
 name: Publish to NPM
 
 on:
-  workflow_dispatch:
+  push:
     branches: [main]
-    inputs:
-      version:
-        description: 'Version bump type'
-        required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
+    paths:
+      - 'packages/create-scaffa/package.json'
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -33,18 +27,27 @@ jobs:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Configure Git
+      - name: Check version
+        id: check
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Bump version
-        run: npm version ${{ github.event.inputs.version }} -m "chore(release): v%s"
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view create-scaffa version 2>/dev/null || echo "0.0.0")
+          echo "local=$LOCAL_VERSION" >> $GITHUB_OUTPUT
+          echo "npm=$NPM_VERSION" >> $GITHUB_OUTPUT
+          if [ "$LOCAL_VERSION" = "$NPM_VERSION" ]; then
+            echo "should_publish=false" >> $GITHUB_OUTPUT
+            echo "Version $LOCAL_VERSION already published, skipping..."
+          else
+            echo "should_publish=true" >> $GITHUB_OUTPUT
+            echo "Publishing $LOCAL_VERSION (npm has $NPM_VERSION)"
+          fi
 
       - name: Publish to npm
+        if: steps.check.outputs.should_publish == 'true'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Push changes
-        run: git push --follow-tags
+      - name: Skip publish
+        if: steps.check.outputs.should_publish == 'false'
+        run: echo "Skipped - version ${{ steps.check.outputs.local }} already exists on npm"
