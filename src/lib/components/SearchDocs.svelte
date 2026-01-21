@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { tick } from 'svelte';
-	import { docs } from './Sidebar.svelte';
 	import { cn } from '$lib/utils';
+	import type { NavSection } from '$lib/docs/types';
+
+	interface Props {
+		navigation: NavSection[];
+	}
+
+	let { navigation }: Props = $props();
 
 	let inputRef: HTMLInputElement = $state(null!);
 	let searchQuery = $state('');
@@ -12,7 +18,7 @@
 	let searchResults = $derived.by(() => {
 		if (!searchQuery) return [];
 
-		return docs.flatMap((group) =>
+		return navigation.flatMap((group) =>
 			group.items.filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
 		);
 	});

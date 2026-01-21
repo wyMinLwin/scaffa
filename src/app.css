@@ -40,3 +40,292 @@ layer(base);
 .cli-wrapper pre {
 	white-space: pre-wrap;
 }
+
+/* Prose styles for markdown content */
+.prose {
+	color: var(--color-light);
+	line-height: 1.75;
+}
+
+:where(.light, .light *) .prose {
+	color: var(--color-dark);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+	font-weight: 600;
+	line-height: 1.3;
+	margin-top: 2em;
+	margin-bottom: 0.75em;
+}
+
+.prose h1 {
+	font-size: 2.25rem;
+}
+
+.prose h2 {
+	font-size: 1.5rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid rgba(247, 241, 255, 0.2);
+}
+
+:where(.light, .light *) .prose h2 {
+	border-bottom-color: rgba(33, 31, 34, 0.2);
+}
+
+.prose h3 {
+	font-size: 1.25rem;
+}
+
+.prose h4 {
+	font-size: 1.125rem;
+}
+
+.prose p {
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+}
+
+.prose a {
+	color: var(--color-primary);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.prose a:hover {
+	color: #60a5fa;
+}
+
+.prose strong {
+	font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+	margin-top: 1.25em;
+	margin-bottom: 1.25em;
+	padding-left: 1.5em;
+}
+
+.prose ul {
+	list-style-type: disc;
+}
+
+.prose ol {
+	list-style-type: decimal;
+}
+
+.prose li {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.prose li::marker {
+	color: var(--color-mute);
+}
+
+.prose code {
+	font-family: 'Fira Mono', monospace;
+	font-size: 0.875em;
+	background-color: rgba(247, 241, 255, 0.1);
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
+}
+
+:where(.light, .light *) .prose code {
+	background-color: rgba(33, 31, 34, 0.1);
+}
+
+.prose pre {
+	font-family: 'Fira Mono', monospace;
+	font-size: 0.875rem;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 1rem 1.25rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+:where(.light, .light *) .prose pre {
+	background-color: rgba(33, 31, 34, 0.05);
+	border: 1px solid rgba(33, 31, 34, 0.1);
+}
+
+.prose pre code {
+	background-color: transparent;
+	padding: 0;
+	font-size: inherit;
+}
+
+.prose blockquote {
+	border-left: 4px solid var(--color-primary);
+	padding-left: 1em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	font-style: italic;
+	color: var(--color-mute);
+}
+
+.prose hr {
+	border: none;
+	border-top: 1px solid rgba(247, 241, 255, 0.2);
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+:where(.light, .light *) .prose hr {
+	border-top-color: rgba(33, 31, 34, 0.2);
+}
+
+.prose table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.prose th,
+.prose td {
+	padding: 0.75rem 1rem;
+	border: 1px solid rgba(247, 241, 255, 0.2);
+	text-align: left;
+}
+
+:where(.light, .light *) .prose th,
+:where(.light, .light *) .prose td {
+	border-color: rgba(33, 31, 34, 0.2);
+}
+
+.prose th {
+	font-weight: 600;
+	background-color: rgba(247, 241, 255, 0.05);
+}
+
+:where(.light, .light *) .prose th {
+	background-color: rgba(33, 31, 34, 0.05);
+}
+
+/* Code block with syntax highlighting */
+.prose .code-block {
+	position: relative;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.prose .code-block pre {
+	margin: 0;
+	padding: 1rem 1.25rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	font-family: 'Fira Mono', monospace;
+	font-size: 0.875rem;
+	line-height: 1.7;
+}
+
+/* Shiki dual theme support */
+.prose .code-block pre {
+	background-color: #24292e !important;
+}
+
+.prose .code-block pre code {
+	background: transparent;
+	padding: 0;
+}
+
+/* Dark mode: use --shiki-dark colors */
+.prose .code-block pre span[style] {
+	color: var(--shiki-dark) !important;
+}
+
+/* Light mode: use --shiki-light colors (default from shiki) */
+:where(.light, .light *) .prose .code-block pre {
+	background-color: #f6f8fa !important;
+	border: 1px solid rgba(33, 31, 34, 0.1);
+}
+
+:where(.light, .light *) .prose .code-block pre span[style] {
+	color: var(--shiki-light) !important;
+}
+
+/* Copy button */
+.prose .code-block .copy-btn {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.4rem;
+	border-radius: 0.375rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: none;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.2s, background-color 0.2s;
+	color: var(--color-light);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+:where(.light, .light *) .prose .code-block .copy-btn {
+	background-color: rgba(0, 0, 0, 0.05);
+	color: var(--color-dark);
+}
+
+.prose .code-block:hover .copy-btn {
+	opacity: 1;
+}
+
+.prose .code-block .copy-btn:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+:where(.light, .light *) .prose .code-block .copy-btn:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.prose .code-block .copy-btn .check-icon {
+	display: none;
+	color: #22c55e;
+}
+
+.prose .code-block .copy-btn.copied .copy-icon {
+	display: none;
+}
+
+.prose .code-block .copy-btn.copied .check-icon {
+	display: block;
+}
+
+/* File tree styles */
+.prose .filetree {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.prose .filetree pre {
+	background-color: #24292e;
+	border-radius: 0.5rem;
+	padding: 1rem 1.25rem;
+	margin: 0;
+	overflow-x: auto;
+	font-family: 'Fira Mono', monospace;
+	font-size: 0.875rem;
+	line-height: 1.7;
+}
+
+.prose .filetree code {
+	background: transparent;
+	padding: 0;
+	color: var(--color-light);
+}
+
+:where(.light, .light *) .prose .filetree pre {
+	background-color: #f6f8fa;
+	border: 1px solid rgba(33, 31, 34, 0.1);
+}
+
+:where(.light, .light *) .prose .filetree code {
+	color: var(--color-dark);
+}
