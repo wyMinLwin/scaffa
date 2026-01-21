@@ -1,57 +1,24 @@
-<script module>
-	export const docs = [
-		{
-			group: 'Getting Started',
-			items: [
-				{
-					title: 'Introduction',
-					path: '/docs',
-					isVisible: true
-				},
-				{
-					title: 'Installation',
-					path: '/docs/installation',
-					isVisible: true
-				}
-			]
-		},
-		{
-			group: 'Guide',
-			items: [
-				{
-					title: 'Templates',
-					path: '/docs/templates',
-					isVisible: true
-				},
-				{
-					title: 'React',
-					path: '/docs/react',
-					isVisible: false
-				},
-				{
-					title: 'Vue',
-					path: '/docs/vue',
-					isVisible: false
-				}
-			]
-		}
-	];
-</script>
-
 <script lang="ts">
 	import { page } from '$app/state';
 	import { cn } from '$lib/utils';
+	import type { NavSection } from '$lib/docs/types';
 
-	let currentPath = $state(page.route.id);
+	interface Props {
+		navigation: NavSection[];
+	}
+
+	let { navigation }: Props = $props();
+
+	let currentPath = $state(page.url.pathname);
 	$effect(() => {
-		currentPath = page.route.id;
+		currentPath = page.url.pathname;
 	});
 </script>
 
 <aside
 	class="w-full h-full hidden md:block overflow-y-auto pt-4 border-r-[1px] border-light/10 light:border-dark/10"
 >
-	{#each docs as group (group.group)}
+	{#each navigation as group (group.group)}
 		<div
 			class="px-4 mb-5 pb-5 last:border-none space-y-2 border-b-[1px] border-light/10 light:border-dark/10"
 		>

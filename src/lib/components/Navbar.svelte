@@ -1,7 +1,14 @@
-<script>
+<script lang="ts">
 	import GitHub from './GitHub.svelte';
-import SearchDocs from './SearchDocs.svelte';
+	import SearchDocs from './SearchDocs.svelte';
 	import ThemeToggle from './ThemeToggle.svelte';
+	import type { NavSection } from '$lib/docs/types';
+
+	interface Props {
+		navigation?: NavSection[];
+	}
+
+	let { navigation = [] }: Props = $props();
 </script>
 
 <nav
@@ -12,7 +19,7 @@ import SearchDocs from './SearchDocs.svelte';
 		<p class="text-xl text-center drop-shadow-md">Scaffa</p>
 	</a>
 	<div class="flex items-center gap-3">
-		<SearchDocs /> 
+		<SearchDocs {navigation} />
 		<div class="w-px h-5 bg-light/10 light:bg-dark/10"></div>
 		<GitHub />
 		<div class="w-px h-5 bg-light/10 light:bg-dark/10"></div>
