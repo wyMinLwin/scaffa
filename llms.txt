@@ -1,0 +1,87 @@
+# Scaffa
+
+
+> All-in-one CLI tool for scaffolding production-ready frontend projects with React or Vue
+
+Scaffa eliminates repetitive setup work by providing pre-configured templates with TypeScript, TailwindCSS, component libraries, routing, state management, and internationalization already in place.
+
+## Quick Start
+
+```bash
+npx create-scaffa@latest
+```
+
+Or with flags:
+```bash
+npx create-scaffa@latest my-app -t react -p pnpm
+npx create-scaffa@latest my-app -t vue -p npm
+```
+
+## Documentation
+
+- [Getting Started](https://scaffa.vercel.app/docs/getting-started/installation)
+- [React Template](https://scaffa.vercel.app/docs/templates/react)
+- [Vue Template](https://scaffa.vercel.app/docs/templates/vue)
+- [CLI Reference](https://scaffa.vercel.app/docs/reference/cli)
+
+## Key Files
+
+- [CLI Entry Point](packages/create-scaffa/bin/index.js): Main CLI executable
+- [Template Definitions](packages/create-scaffa/templates.js): Available templates configuration
+- [React Backbone Template](packages/create-scaffa/templates/react/backbone): Minimal React setup
+- [React Colorful Template](packages/create-scaffa/templates/react/colorful): Full React example
+- [Vue Backbone Template](packages/create-scaffa/templates/vue/backbone): Minimal Vue setup
+- [Vue Colorful Template](packages/create-scaffa/templates/vue/colorful): Full Vue example
+
+## Templates
+
+Each framework offers two variants:
+
+| Framework | Variant | Description |
+|-----------|---------|-------------|
+| React | Backbone | Minimal setup with essential configuration |
+| React | Colorful | Full example with UI components and multiple pages |
+| Vue | Backbone | Minimal setup with essential configuration |
+| Vue | Colorful | Full example with UI components and multiple pages |
+
+## Tech Stack (All Templates)
+
+- TypeScript
+- TailwindCSS
+- Vite
+- Component Library (ShadcN UI for React, Reka UI for Vue)
+- TanStack Query (server state)
+- Axios (HTTP client)
+- Routing (React Router / Vue Router)
+- Internationalization (i18next / Vue I18n)
+- ESLint + Prettier
+
+## CLI Options
+
+- `-t, --template`: Framework choice (`react` or `vue`)
+- `-p, --package`: Package manager (`npm` or `pnpm`)
+
+## Project Structure
+
+```
+scaffa/
+├── packages/create-scaffa/     # CLI tool (npm: create-scaffa)
+│   ├── bin/                    # CLI source code
+│   └── templates/              # Template sources
+├── src/                        # Documentation website (SvelteKit)
+├── content/docs/               # Documentation markdown
+└── static/                     # Static assets
+```
+
+## Requirements
+
+- Node.js >= 20.0.0
+- npm or pnpm
+
+## Repository
+
+- GitHub: https://github.com/wyMinLwin/scaffa
+- npm: https://www.npmjs.com/package/create-scaffa
+- Website: https://scaffa.vercel.app
+- License: MIT
+
