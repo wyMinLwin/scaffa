@@ -41,8 +41,12 @@ export function CommandDialog() {
 						<CommandEmpty>No results found.</CommandEmpty>
 						<CommandGroup heading="Pages">
 							<CommandItem onSelect={() => handleSelect('/')}>Dashboard</CommandItem>
+							<CommandItem onSelect={() => handleSelect('/products')}>Products</CommandItem>
+							<CommandItem onSelect={() => handleSelect('/todos')}>Todos</CommandItem>
 							<CommandItem onSelect={() => handleSelect('/users')}>Users</CommandItem>
 							<CommandItem onSelect={() => handleSelect('/chats')}>Chats</CommandItem>
+							<CommandItem onSelect={() => handleSelect('/settings')}>Settings</CommandItem>
+							<CommandItem onSelect={() => handleSelect('/help')}>Help</CommandItem>
 						</CommandGroup>
 					</CommandList>
 				</Command>

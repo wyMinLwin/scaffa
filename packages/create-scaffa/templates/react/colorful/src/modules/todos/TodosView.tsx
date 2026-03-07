@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Input } from '@/components/ui/input';
-import { ListTodo, MoreHorizontal, Pencil, Plus } from 'lucide-react';
+import { ListTodo, Trash2, Pencil, Plus, CheckCircle } from 'lucide-react';
 import { useState, useMemo } from 'react';
-import { TodoModal } from '@/components/TodoModal';
+import { TodoModal, TaskForm } from '@/components/TodoModal';
 import { Select } from '@/components/ui/select';
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getPriorityBadgeVariant, getStatusBadgeVariant } from '@/utils/todoBadgeUtils';
+import { toast } from 'sonner';
+import { useQueryClient } from '@tanstack/react-query';
 
 type StatusType = 'Pending' | 'In Progress' | 'Completed';
 type PriorityType = 'Low' | 'Medium' | 'High';
@@ -18,10 +20,15 @@ type PriorityType = 'Low' | 'Medium' | 'High';
 const TodosView = () => {
 	const [search, setSearch] = useState('');
 	const [modalOpen, setModalOpen] = useState(false);
+	const [editingTodo, setEditingTodo] = useState<TaskForm | null>(null);
 	const [filterStatus, setFilterStatus] = useState<StatusType | 'All'>('All');
 	const [filterPriority, setFilterPriority] = useState<PriorityType | 'All'>('All');
 
+	const queryClient = useQueryClient();
 	const todosQuery = api.todos.getTodos.useInfiniteQuery();
+	const addMutation = api.todos.addTodo.useMutation();
+	const updateMutation = api.todos.updateTodo.useMutation();
+	const deleteMutation = api.todos.deleteTodo.useMutation();
 
 	const todos = useMemo(
 		() =>
@@ -41,6 +48,98 @@ const TodosView = () => {
 			return matchesSearch && matchesStatus && matchesPriority;
 		});
 	}, [todos, search, filterStatus, filterPriority]);
+
+	const statusToFormStatus = (status: StatusType): TaskForm['status'] => {
+		const map: Record<StatusType, TaskForm['status']> = {
+			'Pending': 'Todo',
+			'In Progress': 'In Progress',
+			'Completed': 'Done'
+		};
+		return map[status];
+	};
+
+	const handleEdit = (todo: (typeof todos)[number]) => {
+		setEditingTodo({
+			id: todo.id.toString(),
+			title: todo.todo,
+			description: '',
+			status: statusToFormStatus(todo.status),
+			priority: todo.priority
+		});
+		setModalOpen(true);
+	};
+
+	const handleDelete = (id: number) => {
+		if (confirm('Are you sure you want to delete this task?')) {
+			deleteMutation.mutate(id, {
+				onSuccess: () => {
+					toast.success('Task deleted successfully');
+					queryClient.invalidateQueries({ queryKey: ['todos'] });
+				},
+				onError: () => {
+					toast.error('Failed to delete task');
+				}
+			});
+		}
+	};
+
+	const handleToggleComplete = (todo: (typeof todos)[number]) => {
+		const isCompleted = todo.status === 'Completed';
+		updateMutation.mutate(
+			{ id: todo.id, data: { completed: !isCompleted } },
+			{
+				onSuccess: () => {
+					toast.success(`Task marked as ${!isCompleted ? 'completed' : 'pending'}`);
+					queryClient.invalidateQueries({ queryKey: ['todos'] });
+				},
+				onError: () => {
+					toast.error('Failed to update task status');
+				}
+			}
+		);
+	};
+
+	const handleSubmit = (task: TaskForm) => {
+		if (editingTodo && task.id) {
+			updateMutation.mutate(
+				{
+					id: parseInt(task.id, 10),
+					data: { todo: task.title, completed: task.status === 'Completed' }
+				},
+				{
+					onSuccess: () => {
+						toast.success('Task updated successfully');
+						queryClient.invalidateQueries({ queryKey: ['todos'] });
+						setModalOpen(false);
+						setEditingTodo(null);
+					},
+					onError: () => {
+						toast.error('Failed to update task');
+					}
+				}
+			);
+		} else {
+			addMutation.mutate(
+				{ todo: task.title, completed: task.status === 'Completed', userId: 1 },
+				{
+					onSuccess: () => {
+						toast.success('Task created successfully');
+						queryClient.invalidateQueries({ queryKey: ['todos'] });
+						setModalOpen(false);
+						setEditingTodo(null);
+					},
+					onError: () => {
+						toast.error('Failed to create task');
+					}
+				}
+			);
+		}
+	};
+
+	const handleOpenNewTask = () => {
+		setEditingTodo(null);
+		setModalOpen(true);
+	};
 
 	return (
 		<div className="p-6 space-y-6">
@@ -85,7 +184,7 @@ const TodosView = () => {
 						</SelectContent>
 					</Select>
 				</div>
-				<Button onClick={() => setModalOpen(true)}>
+				<Button onClick={handleOpenNewTask}>
 					<Plus className="w-4 h-4 mr-2" />
 					New Task
 				</Button>
@@ -127,11 +226,14 @@ const TodosView = () => {
 											</Badge>
 										</td>
 										<td className="px-4 py-3 text-right flex justify-end gap-2">
-											<Button variant="ghost" size="icon">
+											<Button variant="ghost" size="icon" onClick={() => handleToggleComplete(todo)}>
+												<CheckCircle className={`w-4 h-4 ${todo.status === 'Completed' ? 'text-green-500' : 'text-gray-400'}`} />
+											</Button>
+											<Button variant="ghost" size="icon" onClick={() => handleEdit(todo)}>
 												<Pencil className="w-4 h-4" />
 											</Button>
-											<Button variant="ghost" size="icon">
-												<MoreHorizontal className="w-4 h-4" />
+											<Button variant="ghost" size="icon" onClick={() => handleDelete(todo.id)}>
+												<Trash2 className="w-4 h-4 text-red-500" />
 											</Button>
 										</td>
 									</tr>
@@ -160,10 +262,12 @@ const TodosView = () => {
 			{/* Modal */}
 			<TodoModal
 				isOpen={modalOpen}
-				onClose={() => setModalOpen(false)}
-				onSubmit={() => {
-					console.log('Add Todo');
+				onClose={() => {
+					setModalOpen(false);
+					setEditingTodo(null);
 				}}
+				initialData={editingTodo || undefined}
+				onSubmit={handleSubmit}
 			/>
 		</div>
 	);
