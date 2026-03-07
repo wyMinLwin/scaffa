@@ -2,12 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useThemeStore } from '@/lib/theme';
-import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Settings, Sun, Moon, Languages, User, Info } from 'lucide-react';
 
 const SettingsView = () => {
-	const { t } = useTranslation();
 	const { theme, toggleTheme } = useThemeStore();
 
 	const changeLanguage = (lng: string) => {

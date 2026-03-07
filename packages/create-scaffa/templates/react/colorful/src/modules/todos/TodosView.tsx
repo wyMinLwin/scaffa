@@ -100,11 +100,12 @@ const TodosView = () => {
 	};
 
 	const handleSubmit = (task: TaskForm) => {
+		const isTaskCompleted = task.status === 'Done';
 		if (editingTodo && task.id) {
 			updateMutation.mutate(
 				{
 					id: parseInt(task.id, 10),
-					data: { todo: task.title, completed: task.status === 'Completed' }
+					data: { todo: task.title, completed: isTaskCompleted }
 				},
 				{
 					onSuccess: () => {
@@ -120,7 +121,7 @@ const TodosView = () => {
 			);
 		} else {
 			addMutation.mutate(
-				{ todo: task.title, completed: task.status === 'Completed', userId: 1 },
+				{ todo: task.title, completed: isTaskCompleted, userId: 1 },
 				{
 					onSuccess: () => {
 						toast.success('Task created successfully');

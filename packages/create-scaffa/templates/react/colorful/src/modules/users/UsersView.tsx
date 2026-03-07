@@ -10,7 +10,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, Search, Eye, Mail, Phone, Building2, User } from 'lucide-react';
 import { useState, useMemo } from 'react';
-import { toast } from 'sonner';
 
 const UsersView = () => {
 	const [search, setSearch] = useState('');
