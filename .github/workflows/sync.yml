@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   sync:
+    if: github.event.repository.fork == true
     runs-on: ubuntu-latest
     steps:
       - name: Sync fork with upstream
