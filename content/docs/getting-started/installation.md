@@ -17,7 +17,7 @@ The CLI will guide you through:
 1. **Project name** - The folder name for your project
 2. **Template** - React or Vue
 3. **Variant** - Backbone (minimal) or Colorful (with examples)
-4. **Package manager** - npm or pnpm
+4. **Package manager** - npm, pnpm, or bun
 
 Dependencies are installed automatically after scaffolding.
 
@@ -34,7 +34,7 @@ npx create-scaffa@latest my-app -t react -p pnpm
 | Flag | Values | Description |
 |------|--------|-------------|
 | `-t`, `-template` | `react`, `vue` | Select template |
-| `-p`, `-package` | `npm`, `pnpm` | Select package manager |
+| `-p`, `-package` | `npm`, `pnpm`, `bun` | Select package manager |
 
 ### Examples
 
@@ -48,6 +48,12 @@ Create a Vue project with pnpm:
 
 ```bash
 npx create-scaffa@latest my-vue-app -t vue -p pnpm
+```
+
+Create a React project with bun:
+
+```bash
+npx create-scaffa@latest my-react-app -t react -p bun
 ```
 
 ## Project name rules

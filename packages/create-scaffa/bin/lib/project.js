@@ -10,6 +10,8 @@ const getInstallCommand = (packageManager) => {
 			return 'npm install --legacy-peer-deps';
 		case 'pnpm':
 			return 'pnpm install';
+		case 'bun':
+			return 'bun install';
 		default:
 			return 'npm install --legacy-peer-deps';
 	}
