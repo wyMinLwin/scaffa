@@ -45,6 +45,7 @@ Select a package manager without prompting.
 |-------|-------------|
 | `npm` | Use npm for dependency installation |
 | `pnpm` | Use pnpm for dependency installation |
+| `bun` | Use bun for dependency installation |
 
 Example:
 
