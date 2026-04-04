@@ -13,7 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.2",
     "@tanstack/vue-query": "^5.92.9",
     "@vueuse/core": "^14.1.0",
     "axios": "^1.13.2",
@@ -44,7 +44,7 @@
     "prettier": "^3.8.1",
     "typescript": "~5.9.3",
     "vite": "^8.0.3",
-    "vite-plugin-vue-devtools": "^8.0.5",
+    "vite-plugin-vue-devtools": "^8.1.1",
     "vue-tsc": "^3.2.3"
   }
 }
