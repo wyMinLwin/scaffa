@@ -1,3 +1,5 @@
+
+
 # Scaffa Documentation
 
 ## Overview
@@ -19,7 +21,7 @@ Then follow the interactive prompts. For more details on its implementation, che
 You can even create a project easily with scaffold feature.
 
 ```sh
-npx create-scaffa@latest <ur-project-name> -t <template> -p <package-manager>
+npx create-scaffa@latest <your-project-name> -t <template> -p <package-manager>
 ```
 
 **Example**
